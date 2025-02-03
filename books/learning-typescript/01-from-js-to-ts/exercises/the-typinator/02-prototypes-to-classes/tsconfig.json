@@ -1,0 +1,6 @@
+{
+	"extends": "../../../../../../../learning-typescript-projects/tsconfig.json",
+	"include": [
+      "./"
+    ]
+}

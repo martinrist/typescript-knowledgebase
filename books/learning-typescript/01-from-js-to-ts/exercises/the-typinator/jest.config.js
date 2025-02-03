@@ -5,7 +5,7 @@ module.exports = {
       "@swc/jest",
       {
         jsc: {
-          target: "es2021",
+          target: "es2022",
         },
       },
     ],

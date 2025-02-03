@@ -3,7 +3,7 @@
 ## Links
 
 - [Chapter 1 Hub][ref-chapter01-hub]
-- [Exercises - The Typeinator][ref-chapter01-exercises-the-typinator]
+- [Exercises - The Typinator][ref-chapter01-exercises-the-typinator]
 
 <!-- References -->
 

@@ -1,0 +1,12 @@
+<header>{{ title() }}</header>
+<main class="main">
+  <div>
+      <h1>Hello, {{ title() }}</h1>
+      <p>Congratulations! Your app is running. 🎉</p>
+      <div class="content">
+        <app-product-list></app-product-list>
+      </div>
+  </div>
+</main>
+<footer appCopyright> - v {{ settings.version }}</footer>
+<router-outlet />

@@ -14,10 +14,11 @@ import {Observable, switchMap} from 'rxjs';
 import {ProductsService} from '../products.service';
 import {AuthService} from '../auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-product-detail',
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css',
   encapsulation: ViewEncapsulation.Emulated,     // This is the default
@@ -26,6 +27,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class ProductDetailComponent implements OnInit {
   product$: Observable<Product> | undefined;
   id = input<number>();
+  price: number | undefined;
 
   constructor(
     private productService: ProductsService,
@@ -45,8 +47,11 @@ export class ProductDetailComponent implements OnInit {
     )
   }
 
-  changePrice(product: Product, price: string) {
-    this.productService.updateProduct(product.id, Number(price)).subscribe(() => {
+  changePrice(product: Product) {
+    this.productService.updateProduct(
+      product.id,
+      this.price!
+    ).subscribe(() => {
       this.router.navigate(['/products']);
     });
   }

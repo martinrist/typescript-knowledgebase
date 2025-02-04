@@ -1,8 +1,8 @@
-import {inject, Injectable} from '@angular/core';
+ import {inject, Injectable} from '@angular/core';
 import {Product} from './product';
-import {map, Observable, of, tap} from 'rxjs';
+import {catchError, map, Observable, of, retry, tap, throwError} from 'rxjs';
 import {APP_SETTINGS} from './app.settings';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpParams, HttpStatusCode} from '@angular/common/http';
 
 @Injectable()
 export class ProductsService {
@@ -20,10 +20,14 @@ export class ProductsService {
       const options = new HttpParams().set('limit', limit || 10);
       return this.http.get<Product[]>(this.productsUrl, {
         params: options,
-      }).pipe(map(products => {
-        this.products = products;
-        return products;
-      }));
+      }).pipe(
+        map(products => {
+          this.products = products;
+          return products;
+        }),
+        retry(2),
+        catchError(this.handleError)
+      );
     }
     return of(this.products);
   }
@@ -59,5 +63,26 @@ export class ProductsService {
         this.products.splice(index, 1);
       })
     )
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    let message = '';
+    switch (error.status) {
+      case 0:
+        message = 'Client error';
+        break;
+      case HttpStatusCode.InternalServerError:
+        message = 'Server error';
+        break;
+      case HttpStatusCode.BadRequest:
+        message = 'Request error';
+        break;
+      default:
+        message = 'Unknown error';
+    }
+
+    console.error(message, error.error);
+
+    return throwError(() => error);
   }
 }

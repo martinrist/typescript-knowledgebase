@@ -64,3 +64,14 @@ label {
   margin-bottom: 4px;
   display: block;
 }
+
+.help-text {
+  display: flex;
+  color: var(--hot-red);
+  font-size: 0.875rem;
+}
+
+button:disabled {
+  background-color: lightgrey;
+  cursor: not-allowed;
+}

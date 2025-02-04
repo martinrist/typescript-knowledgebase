@@ -17,6 +17,17 @@
       <option>Other</option>
     </select>
   </div>
+  <h2>Additional details</h2>
+  <form formGroupName="extra">
+    <div>
+      <label for="descr">Description</label>
+      <input id="descr" formControlName="description"/>
+    </div>
+    <div>
+      <label for="photo">Photo URL</label>
+      <input id="photo" formControlName="image"/>
+    </div>
+  </form>
   <div>
     <button type="submit">Create</button>
   </div>

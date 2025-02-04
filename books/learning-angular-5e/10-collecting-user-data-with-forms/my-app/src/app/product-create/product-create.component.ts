@@ -15,6 +15,10 @@ export class ProductCreateComponent {
     title: new FormControl('', { nonNullable: true }),
     price: new FormControl<number | undefined>(undefined, { nonNullable: true }),
     category: new FormControl('', { nonNullable: true }),
+    extra: new FormGroup({
+      image: new FormControl(''),
+      description: new FormControl('')
+    })
   });
 
   constructor(private productService: ProductsService, private router: Router) {}

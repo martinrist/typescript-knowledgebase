@@ -15,7 +15,7 @@
     </div>
     <div class="button-group">
       @if (authService.isLoggedIn()) {
-        <button (click)="addToCart()">Add to cart</button>
+        <button (click)="addToCart(product.id)">Add to cart</button>
       }
       <button class="delete" (click)="remove(product)">Delete</button>
     </div>

@@ -10,9 +10,16 @@
   <div>
     <label for="price">Price</label>
     <input id="price" formControlName="price" type="number" required/>
-    @if (productForm.controls.price.touched && productForm.controls.price.invalid) {
+    @if (productForm.controls.price.touched && productForm.controls.price.hasError('required')) {
       <span class="help-text">Price is required</span>
     }
+    @if (productForm.controls.price.touched && productForm.controls.price.hasError('min')) {
+      <span class="help-text">Price should be greater than 0</span>
+    }
+    @if (productForm.controls.price.touched && productForm.controls.price.hasError('priceMaximum')) {
+      <span class="help-text">Price must be smaller or equal to 1000</span>
+    }
+
   </div>
   <div>
     <label for="category">Category</label>

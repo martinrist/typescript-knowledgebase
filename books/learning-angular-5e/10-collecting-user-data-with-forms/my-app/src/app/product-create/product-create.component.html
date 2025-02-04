@@ -1,12 +1,18 @@
 <h1>Add new product</h1>
-<form [formGroup]="productForm!" (ngSubmit)="createProduct()">
+<form [formGroup]="productForm" (ngSubmit)="createProduct()">
   <div>
     <label for="title">Title</label>
     <input id="title" formControlName="title" required/>
+    @if (productForm.controls.title.touched && productForm.controls.title.invalid) {
+      <span class="help-text">Title is required</span>
+    }
   </div>
   <div>
     <label for="price">Price</label>
     <input id="price" formControlName="price" type="number" required/>
+    @if (productForm.controls.price.touched && productForm.controls.price.invalid) {
+      <span class="help-text">Price is required</span>
+    }
   </div>
   <div>
     <label for="category">Category</label>
@@ -29,6 +35,6 @@
     </div>
   </form>
   <div>
-    <button type="submit">Create</button>
+    <button type="submit" [disabled]="productForm.invalid">Create</button>
   </div>
 </form>

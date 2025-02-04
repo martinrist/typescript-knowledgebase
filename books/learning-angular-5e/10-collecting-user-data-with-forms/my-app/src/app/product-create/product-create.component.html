@@ -1,21 +1,23 @@
 <h1>Add new product</h1>
-<div>
-  <label for="title">Title</label>
-  <input id="title" #title />
-</div>
-<div>
-  <label for="price">Price</label>
-  <input id="price" #price />
-</div>
-<div>
-  <label for="category">Category</label>
-  <select id="category" #category>
-    <option>Select a category</option>
-    <option value="electronics">Electronics</option>
-    <option value="jewelery">Jewelery</option>
-    <option>Other</option>
-  </select>
-</div>
-<div>
-  <button (click)="createProduct(title.value, price.value, category.value)">Create</button>
-</div>
+<form [formGroup]="productForm" (ngSubmit)="createProduct()">
+  <div>
+    <label for="title">Title</label>
+    <input id="title" formControlName="title"/>
+  </div>
+  <div>
+    <label for="price">Price</label>
+    <input id="price" formControlName="price" type="number"/>
+  </div>
+  <div>
+    <label for="category">Category</label>
+    <select id="category" formControlName="category">
+      <option>Select a category</option>
+      <option value="electronics">Electronics</option>
+      <option value="jewelery">Jewelery</option>
+      <option>Other</option>
+    </select>
+  </div>
+  <div>
+    <button type="submit">Create</button>
+  </div>
+</form>

@@ -52,6 +52,8 @@ describe(describeCity, () => {
       `
     ]
   ])('%p', (city, description) => {
-    expect(describeCity(city)).toEqual(description);
+    const output = describeCity(city);
+    console.log(output);
+    expect(output).toEqual(description);
   });
 });

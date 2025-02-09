@@ -258,6 +258,6 @@
 
 <!-- References -->
 
-[ref-chapter07-hub]: //www.learningtypescript.com/interfaces/
+[ref-chapter07-hub]: https://www.learningtypescript.com/interfaces/
 [ref-chapter07-exercises-vacation-planning]: https://www.learningtypescript.com/interfaces/vacation-planning/
 [ref-chapter07-exercises-playlist-soundness]: https://www.learningtypescript.com/interfaces/playlist-soundness/

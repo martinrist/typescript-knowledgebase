@@ -1,15 +1,6 @@
-# Chapter 9 - Type Modifiers
+# Type Modifiers
 
-## Links
-
-- [Chapter 9 Hub][ref-chapter09-hub]
-- [Exercises - Modifiers of the Types][ref-chapter09-exercises-modifiers-of-the-types]
-- [Exercises - Type Force][ref-chapter09-exercises-type-force]
-
-
-## Notes
-
-### Top Types - `any` & `unknown`
+## Top Types - `any` & `unknown`
 
 - A _top type_ or _universal type_ is a type that can represent any possible
   value in a type system.
@@ -41,7 +32,7 @@
     ```
 
 
-### Type Predicates
+## Type Predicates
 
 - Simple constructs such as `instanceof` and `typeof` checks can be used to
   narrow types, but it gets lost if the logic is wrapped in a function:
@@ -91,7 +82,7 @@
     ```
 
 
-### Type Operators
+## Type Operators
 
 - Sometimes it is necessary to create a new type that performs some
   transformation on an existing type.  These are created using _type operators_.
@@ -147,7 +138,7 @@
     ```
 
 
-### Type Assertions
+## Type Assertions
 
 - In some cases, we need to manually override the type system's
   understanding of a value, by providing a _type assertion_ (also known as a
@@ -189,7 +180,7 @@
     ```
 
 
-### Const Assertions
+## Const Assertions
 
 - _Const assertions_ can be used to indicate that any value should be
   treated as the constant, immutable version of itself:
@@ -199,7 +190,3 @@
 
 
 <!-- References -->
-
-[ref-chapter09-hub]: https://www.learningtypescript.com/type-modifiers/
-[ref-chapter09-exercises-modifiers-of-the-types]: https://www.learningtypescript.com/type-modifiers/modifiers-of-the-types/
-[ref-chapter09-exercises-type-force]: https://www.learningtypescript.com/type-modifiers/type-force/

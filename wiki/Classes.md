@@ -1,16 +1,6 @@
-# Chapter 7 - Interfaces
+# Classes
 
-## Links
-
-- [Chapter 8 Hub][ref-chapter08-hub]
-- [Exercises - Classifying Creatures][ref-chapter08-exercises-classifying-creatures]
-- [Exercises - The Shape of Types][ref-chapter08-exercises-shape-of-types]
-- [Exercises - Horror Factory][ref-chapter08-exercises-horror-factory]
-
-
-## Notes
-
-### Class Methods
+## Class Methods
 
 - TypeScript generally understands _class methods_ in the same way as standalone
   functions:
@@ -32,7 +22,7 @@
     ```
 
 
-### Class Properties
+## Class Properties
 
 - To read from or write to a property on a class, an explicit _class property_
   must be declared, using the same syntax as interfaces:
@@ -113,7 +103,7 @@
     ```
 
 
-### Classes as Types
+## Classes as Types
 
 - Class declarations create both a runtime value (the class itself) as well as a
   type that can be used in type annotations.
@@ -146,7 +136,7 @@
   object values to places that ask for class types.
 
 
-### Classes & Interfaces
+## Classes & Interfaces
 
 - Classes can declare their instances as adhering to an interface using the
   `implements` keyword.  Instances of the class are then assignable to each of
@@ -177,7 +167,7 @@
   comma-separated list in the `implements` clause.
 
 
-### Extending Classes
+## Extending Classes
 
 - Types can extend (or subclass) another class by adding `extends...` after the
   derived class name:
@@ -209,7 +199,7 @@
     - This must be done before accessing either `this` or `super`.
 
 
-### Overriding Properties & Methods
+## Overriding Properties & Methods
 
 - Subclasses may redeclare new methods with the same names as the base class as
   long as the derived method is _assignable_ to the method on the base class.
@@ -219,7 +209,7 @@
   property's type.
 
 
-### Abstract Classes
+## Abstract Classes
 
 - Base classes can be declared as `abstract` to denote that they cannot be
   instantiated, and must be overridden:
@@ -244,7 +234,7 @@
   methods, then the class itself must be declared `abstract`.
 
 
-### Member Visibility
+## Member Visibility
 
 - Class members can have modifiers attached to denote the following levels of
   visibility:
@@ -264,8 +254,3 @@
 
 
 <!-- References -->
-
-[ref-chapter08-hub]: http://www.learningtypescript.com/classes/
-[ref-chapter08-exercises-classifying-creatures]: https://www.learningtypescript.com/classes/classifying-creatures/
-[ref-chapter08-exercises-shape-of-types]: https://www.learningtypescript.com/classes/the-shape-of-types/
-[ref-chapter08-exercises-horror-factory]: https://www.learningtypescript.com/classes/horror-factory/

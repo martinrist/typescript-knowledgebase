@@ -1,15 +1,6 @@
-# Chapter 6 - Arrays
+# Arrays
 
-## Links
-
-- [Chapter 6 Hub][ref-chapter06-hub]
-- [Exercises - Analyzing DNA][ref-chapter06-exercises-analyzing-dna]
-- [Exercises - Structural Kitchen][ref-chapter06-exercises-text-processor]
-
-
-## Notes
-
-### Array Types & Member Access
+## Array Types & Member Access
 
 - JavaScript arrays are heterogeneous by default.  In TypeScript, heterogeneous
   arrays can be declared, but they are technically arrays of a single type - the
@@ -66,7 +57,7 @@
       errors or crashing.
 
 
-### Spreads & Rests
+## Spreads & Rests
 
 - _Rest parameters_ and _array spreading_, both using the `...` operator, are
   key ways to interact with arrays.
@@ -95,7 +86,7 @@
     ```
 
 
-### Tuples
+## Tuples
 
 - Sometimes, it's useful to have an array of a fixed size - commonly referred to
   as a _tuple_.
@@ -126,7 +117,3 @@
 
 
 <!-- References -->
-
-[ref-chapter06-hub]: https://www.learningtypescript.com/arrays/
-[ref-chapter06-exercises-analyzing-dna]: https://www.learningtypescript.com/arrays/analyzing-dna/
-[ref-chapter06-exercises-text-processor]: https://www.learningtypescript.com/arrays/text-processor/

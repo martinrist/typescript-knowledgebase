@@ -1,16 +1,6 @@
-# Chapter 5 - Functions
+# Functions
 
-## Links
-
-- [Chapter 5 Hub][ref-chapter05-hub]
-- [Exercises - Secret Secrets][ref-chapter05-exercises-secret-secrets]
-- [Exercises - Structural Kitchen][ref-chapter05-exercises-structural-kitchen]
-
-
-
-## Notes
-
-### Function Parameters
+## Function Parameters
 
 - Like variables, TypeScript allows types of function parameters to be declared
   with a type annotation:
@@ -74,7 +64,7 @@
     ```
 
 
-### Return Types
+## Return Types
 
 - If TypeScript knows all the possible return values from a function, it can
   infer the return type of the function:
@@ -127,7 +117,7 @@
     ```
 
 
-### Function Types
+## Function Types
 
 - Since functions can be used as first-class values, we need a way to declare
   the type of a variable that contains a function.
@@ -159,7 +149,7 @@
     ```
 
 
-### Function Overloads
+## Function Overloads
 
 - TypeScript allows _funciton overloading_ by declaring multiple versions of the
   funciton's name, parameters and return ttypes before a final _implementation
@@ -188,7 +178,3 @@
 
 
 <!-- References -->
-
-[ref-chapter05-hub]: https://www.learningtypescript.com/functions/
-[ref-chapter05-exercises-secret-secrets]: https://www.learningtypescript.com/functions/secret-secrets/
-[ref-chapter05-exercises-structural-kitchen]: https://www.learningtypescript.com/functions/structural-kitchen/

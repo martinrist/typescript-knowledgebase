@@ -1,15 +1,6 @@
-# Chapter 7 - Interfaces
+# Interfaces
 
-## Links
-
-- [Chapter 7 Hub][ref-chapter07-hub]
-- [Exercises - Vacation Planning][ref-chapter07-exercises-vacation-planning]
-- [Exercises - Playlist Soundness][ref-chapter07-exercises-playlist-soundness]
-
-
-## Notes
-
-### Type Aliases vs Interfaces
+## Type Aliases vs Interfaces
 
 - Type aliases for object types are a way to describe object types.  Interfaces
   are an alternative, with very similar syntax:
@@ -39,7 +30,7 @@
       their error messages are typically more readable in complex cases.
 
 
-### Types of Properties
+## Types of Properties
 
 - As with object types, interface properties can be optional, indicated with `?`
   before the type annotation:
@@ -129,7 +120,7 @@
     ```
 
 
-### Nested Interfaces
+## Nested Interfaces
 
 - Just as object types can be nested as properties of other object types,
   interface types can also be nested:
@@ -159,7 +150,7 @@
     ```
 
 
-### Interface Extensions
+## Interface Extensions
 
 - TypeScript allows interfaces to _extend_ each other - enabling common
   members to be extracted to a base interface.
@@ -224,7 +215,7 @@
     ```
 
 
-### Interface Merging
+## Interface Merging
 
 - Interfaces can be _merged_ - two (or more) interfaces declared in the same
   scope with the same name will join into one bigger interface under that name
@@ -257,7 +248,3 @@
 
 
 <!-- References -->
-
-[ref-chapter07-hub]: https://www.learningtypescript.com/interfaces/
-[ref-chapter07-exercises-vacation-planning]: https://www.learningtypescript.com/interfaces/vacation-planning/
-[ref-chapter07-exercises-playlist-soundness]: https://www.learningtypescript.com/interfaces/playlist-soundness/

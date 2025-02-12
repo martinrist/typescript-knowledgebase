@@ -1,15 +1,6 @@
-# Chapter 4 - Objects
+# Objects
 
-## Links
-
-- [Chapter 4 Hub][ref-chapter04-hub]
-- [Exercises - Various Lawyerings][ref-chapter04-exercises-various-lawyerings]
-- [Exercises - The Typer][ref-chapter04-exercises-the-typer]
-
-
-## Notes
-
-### Object Types
+## Object Types
 
 - When creating an object literal, TypeScript considers it to be a new type,
   based on its properties:
@@ -63,7 +54,7 @@
     ```
 
 
-### Structural Typing
+## Structural Typing
 
 - TypeScript's type system is _structurally typed_ - any value that satisfies a
   type is allowed to be used as a value of that type.
@@ -142,7 +133,7 @@
     };
     ```
 
-### Optional Properties
+## Optional Properties
 
 - Object type properties don't all have to be reuqired in the object - optional
   properties are denoted by `?`:
@@ -166,7 +157,7 @@
       even if the value is `undefined`.
 
 
-### Unions of Object Types
+## Unions of Object Types
 
 - If a variable is given an initial value that could be one of multiple object
   types, TypeScript will infer its type to be a union of object types.
@@ -213,7 +204,7 @@
     ```
 
 
-### Discriminated Unions
+## Discriminated Unions
 
 - Discriminated unions have a property on the object that indcates what shape
   the object is - the property is called a _discriminant_.
@@ -248,7 +239,7 @@
     ```
 
 
-### Intersection Types
+## Intersection Types
 
 - Intersection types are the dual of union types, and represent a type that is
   multiple types at the same time.
@@ -284,8 +275,3 @@
 
 
 <!-- References -->
-
-[ref-chapter04-hub]: https://www.learningtypescript.com/objects/
-[ref-chapter04-exercises-various-lawyerings]: https://www.learningtypescript.com/objects/various-lawyerings/
-[ref-chapter04-exercises-the-typer]: https://www.learningtypescript.com/objects/the-typer/
-

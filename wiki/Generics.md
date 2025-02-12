@@ -1,15 +1,6 @@
-# Chapter 10 - Generics
+# Generics
 
-## Links
-
-- [Chapter 10 Hub][ref-chapter10-hub]
-- [Exercises - Hidash][ref-chapter10-exercises-hidash]
-- [Exercises - Treasure Hunter][ref-chapter10-exercises-treasure-hunter]
-
-
-## Notes
-
-### Generic Functions
+## Generic Functions
 
 - Constructs such as functions may declare any number of generic _type
   parameters_ that are determined for each use of the generic construct.
@@ -48,7 +39,7 @@
     ```
 
 
-### Generic Interfaces
+## Generic Interfaces
 
 - Interfaces may also be declared as generic, following similar rules to
   functions:
@@ -68,7 +59,7 @@
   inferred from usage.
 
 
-### Generic Classes
+## Generic Classes
 
 - Classes, like interfaces, can also declare any number of type parameters
   to be later used on members:
@@ -131,7 +122,7 @@
   from their class instance.
 
 
-### Generic Type Aliases
+## Generic Type Aliases
 
 - Type aliases may also be made generic with type arguments:
 
@@ -176,7 +167,7 @@
     ```
 
 
-### Generic Modifiers
+## Generic Modifiers
 
 - TypeScript includes syntax that allows you to modify the behaviour of
   generic type parameters.
@@ -201,7 +192,7 @@
   come last in their declaration list.
 
 
-### Constrained Generic Types
+## Constrained Generic Types
 
 - TypeScript allows for a type parameter to declare itself as needing to
   _extend_ a type, meaning it's only allowed to alias types that are
@@ -240,7 +231,7 @@
     ```
 
 
-### Promises
+## Promises
 
 - Promises are represented in the TypeScript type system as a generic
   `Promise<Value>` class.
@@ -273,7 +264,3 @@
 
 
 <!-- References -->
-
-[ref-chapter10-hub]: https://www.learningtypescript.com/generics/
-[ref-chapter10-exercises-hidash]: https://www.learningtypescript.com/generics/hidash/
-[ref-chapter10-exercises-treasure-hunter]: https://www.learningtypescript.com/generics/treasure-hunter/

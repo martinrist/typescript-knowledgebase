@@ -15,7 +15,7 @@
   call to match the number of parameters in the function declaration.
 
 - To specify optional arguments, add a `?` before the `:` in the type
-  annotation.  These parameters don't have to be provided to funciton calls and
+  annotation.  These parameters don't have to be provided to function calls and
   their types therefore have an implicit `| undefined` added as a union type:
 
     ```typescript
@@ -111,7 +111,7 @@
   return at all:
 
     ```typescript
-    funciton fail(message: string): never {
+    function fail(message: string): never {
         throw new Error(`Invariant failure: ${message}.`);
     }
     ```
@@ -151,8 +151,8 @@
 
 ## Function Overloads
 
-- TypeScript allows _funciton overloading_ by declaring multiple versions of the
-  funciton's name, parameters and return ttypes before a final _implementation
+- TypeScript allows _function overloading_ by declaring multiple versions of the
+  function's name, parameters and return ttypes before a final _implementation
   signature_ and the function body:
 
     ```typescript

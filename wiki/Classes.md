@@ -6,6 +6,7 @@
   * [Contents](#contents)
   * [Class Methods](#class-methods)
   * [Class Properties](#class-properties)
+  * [Class Parameter Properties](#class-parameter-properties)
   * [Classes as Types](#classes-as-types)
   * [Classes & Interfaces](#classes--interfaces)
   * [Extending Classes](#extending-classes)
@@ -114,6 +115,32 @@
         // @ts-expect-error: Cannot assign to 'text' because it is a read-only property.
         this.text += "!";
       }
+    }
+    ```
+
+
+## Class Parameter Properties
+
+- A common idiom in JavaScript is to take a parameter in a constructor and
+  immediately assign it to a class property:
+
+    ```typescript
+    class Engineer {
+      readonly area: string;
+      constructor(area: string) {
+        this.area = area;
+      }
+    }
+    ```
+
+- TypeScript includes a shorthand syntax for these _class parameter
+  properties_ - placing `readonly` and / or one of `public` / `protected` /
+  `private` access modifiers before the constructor parameter also declares
+  a property of that same name and type:
+
+    ```typescript
+    class Engineer {
+      constructor(readonly area: string) { }
     }
     ```
 

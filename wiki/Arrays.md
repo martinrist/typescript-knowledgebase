@@ -1,5 +1,15 @@
 # Arrays
 
+## Contents
+<!-- TOC -->
+* [Arrays](#arrays)
+  * [Contents](#contents)
+  * [Array Types & Member Access](#array-types--member-access)
+  * [Spreads & Rests](#spreads--rests)
+  * [Tuples](#tuples)
+<!-- TOC -->
+
+
 ## Array Types & Member Access
 
 - JavaScript arrays are heterogeneous by default.  In TypeScript, heterogeneous

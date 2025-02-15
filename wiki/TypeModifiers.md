@@ -1,5 +1,17 @@
 # Type Modifiers
 
+## Contents
+<!-- TOC -->
+* [Type Modifiers](#type-modifiers)
+  * [Contents](#contents)
+  * [Top Types - `any` & `unknown`](#top-types---any--unknown)
+  * [Type Predicates](#type-predicates)
+  * [Type Operators](#type-operators)
+  * [Type Assertions](#type-assertions)
+  * [Const Assertions](#const-assertions)
+<!-- TOC -->
+
+
 ## Top Types - `any` & `unknown`
 
 - A _top type_ or _universal type_ is a type that can represent any possible

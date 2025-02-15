@@ -1,5 +1,16 @@
 # Functions
 
+## Contents
+<!-- TOC -->
+* [Functions](#functions)
+  * [Contents](#contents)
+  * [Function Parameters](#function-parameters)
+  * [Return Types](#return-types)
+  * [Function Types](#function-types)
+  * [Function Overloads](#function-overloads)
+<!-- TOC -->
+
+
 ## Function Parameters
 
 - Like variables, TypeScript allows types of function parameters to be declared

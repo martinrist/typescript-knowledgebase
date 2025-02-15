@@ -1,5 +1,19 @@
 # Generics
 
+## Contents
+<!-- TOC -->
+* [Generics](#generics)
+  * [Contents](#contents)
+  * [Generic Functions](#generic-functions)
+  * [Generic Interfaces](#generic-interfaces)
+  * [Generic Classes](#generic-classes)
+  * [Generic Type Aliases](#generic-type-aliases)
+  * [Generic Modifiers](#generic-modifiers)
+  * [Constrained Generic Types](#constrained-generic-types)
+  * [Promises](#promises)
+<!-- TOC -->
+
+
 ## Generic Functions
 
 - Constructs such as functions may declare any number of generic _type

@@ -1,5 +1,17 @@
 # Interfaces
 
+## Contents
+<!-- TOC -->
+* [Interfaces](#interfaces)
+  * [Contents](#contents)
+  * [Type Aliases vs Interfaces](#type-aliases-vs-interfaces)
+  * [Types of Properties](#types-of-properties)
+  * [Nested Interfaces](#nested-interfaces)
+  * [Interface Extensions](#interface-extensions)
+  * [Interface Merging](#interface-merging)
+<!-- TOC -->
+
+
 ## Type Aliases vs Interfaces
 
 - Type aliases for object types are a way to describe object types.  Interfaces

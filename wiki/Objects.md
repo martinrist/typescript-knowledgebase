@@ -1,5 +1,18 @@
 # Objects
 
+## Contents
+<!-- TOC -->
+* [Objects](#objects)
+  * [Contents](#contents)
+  * [Object Types](#object-types)
+  * [Structural Typing](#structural-typing)
+  * [Optional Properties](#optional-properties)
+  * [Unions of Object Types](#unions-of-object-types)
+  * [Discriminated Unions](#discriminated-unions)
+  * [Intersection Types](#intersection-types)
+<!-- TOC -->
+
+
 ## Object Types
 
 - When creating an object literal, TypeScript considers it to be a new type,

@@ -1,5 +1,20 @@
 # Classes
 
+## Contents
+<!-- TOC -->
+* [Classes](#classes)
+  * [Contents](#contents)
+  * [Class Methods](#class-methods)
+  * [Class Properties](#class-properties)
+  * [Classes as Types](#classes-as-types)
+  * [Classes & Interfaces](#classes--interfaces)
+  * [Extending Classes](#extending-classes)
+  * [Overriding Properties & Methods](#overriding-properties--methods)
+  * [Abstract Classes](#abstract-classes)
+  * [Member Visibility](#member-visibility)
+<!-- TOC -->
+
+
 ## Class Methods
 
 - TypeScript generally understands _class methods_ in the same way as standalone

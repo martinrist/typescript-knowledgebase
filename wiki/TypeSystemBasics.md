@@ -1,5 +1,22 @@
 # Type System Basics
 
+## Contents
+<!-- TOC -->
+* [Type System Basics](#type-system-basics)
+  * [Contents](#contents)
+  * [Primitive Types](#primitive-types)
+  * [Kinds of Errors](#kinds-of-errors)
+  * [Assignability](#assignability)
+  * [Type Annotations](#type-annotations)
+  * [Type Shapes](#type-shapes)
+  * [Union Types](#union-types)
+  * [Narrowing](#narrowing)
+  * [Literal Types](#literal-types)
+  * [Strict Null Checking](#strict-null-checking)
+  * [Type Aliases](#type-aliases)
+<!-- TOC -->
+
+
 ## Primitive Types
 
 - TypeScript has similar primitive types to JavaScript:

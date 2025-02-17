@@ -1,11 +1,243 @@
 # Directives
 
 <!-- TOC -->
+
 * [Directives](#directives)
-  * [Overview](#overview)
+    * [Overview](#overview)
+    * [Structural Directives](#structural-directives)
+    * [Conditional Display with `*ngIf`](#conditional-display-with-ngif)
+    * [Iteration with `*ngFor`](#iteration-with-ngfor)
+    * [Switching Templates with `ngSwitch`](#switching-templates-with-ngswitch)
+    * [Building Custom Directives](#building-custom-directives)
+
 <!-- TOC -->
 
 ## Overview
 
+- Angular directives are HTML attributes that extend the behaviour or
+  appearance of a standard HTML element.
+
+- There are three types of directives:
+    - _Components_ - directives with an associated template.
+    - _Structural directives_ (e.g. `*ngIf` / `*ngFor`) - these add elements
+      to or remove elements from the DOM.
+    - _Attribute directives_ - these modify the appearance of or define a
+      custom behaviour for a DOM element.
+
+- Angular contains a number of built-in directives in `CommonModule`, which
+  needs to be imported into our modules.
+
+## Structural Directives
+
+- Names of structural directives conventionally start with a `*`.
+
+- Angular contains the following _structural directives_ by default:
+    - `*ngIf` - adds or removes a portion of hte DOM tree based on an
+      expression.
+    - `*ngFor` - iterates through a list of items and binds each item to a
+      template.
+    - `ngSwitch` - switches between templates based on a condition.
+
+## Conditional Display with `*ngIf`
+
+- `*ngIf` contains an expression - if this evaluates to `true`, the element
+  is inserted into the DOM tree. Otherwise, the element is removed:
+
+    ```html
+    <!-- Only added if `name` evaluates to `true` -->
+    <div *ngIf="name">
+      <h2>Product Details</h2>
+      <h3>{{ name }}</h3>
+    </div>
+    ```
+
+- To display another element if the condition in `*ngIf` evaluates for
+  `false`, add an `else localReferenceVariable` statement where
+  [`localReferenceVariable`][ref-LocalReferenceVariable] points to an
+  alternative `ng-template`:
+
+    ```html
+    <!-- Only added if `name` evaluates to `true` -->
+    <div *ngIf="name; else noProduct">
+      <h2>Product Details</h2>
+      <h3>{{ name }}</h3>
+    </div>
+
+    <ng-template #noProduct>
+      <p>No product selected!</p>
+    </ng-template>
+    ```
+
+## Iteration with `*ngFor`
+
+- `*ngFor` allows iteration through a collection of items and renders a
+  template for each item - the equivalent of a `for` loop for HTML templates.
+
+- Basic syntax contains an expression of the form `let item of items`.
+  `item` is then bound within the scope of the directive:
+
+    ```html
+    <ul>
+      <li *ngFor="let product of products">
+        {{ product }}
+      </li>
+    </ul>
+    ```
+
+- The `*ngFor` directive can observe changes in the underlying collection
+  and add, remove and sort the rendered templates as items are added,
+  removed or reordered.
+
+- We can also set a template input variable using `let variable = property`
+  to use the following values:
+    - `index` - (0-based) index of the item in the array.
+    - `first` / `last` - `boolean` value referencing whether the current
+      item is the first or last in the array.
+    - `even` / `odd` - `boolean` value indicating whether the item's index
+      is even or odd.
+
+- By default, Angular tracks changes to the underlying array using _object
+  identity_. Alternatively, we can use a specific property of the items (e.g.
+  an identifier) using `trackBy`:
+
+    ```html
+    <ul>
+      <li *ngFor="let product of products; trackBy: trackByProducts">
+        {{product}}
+      </li>
+    </ul>
+    ```
+
+    ```typescript
+    export class ProductListComponent {
+      trackByProducts(index: number, name: string): string {
+        return name;
+      }
+    }
+    ```
+
+## Switching Templates with `ngSwitch`
+
+- The `ngSwitch` directive allows switching between different templates
+  based on the value of an expression.
+
+- `ngSwitch` directives consist of three main parts:
+    - `[ngSwitch]` - defines the property that we want to switch on.
+    - `*ngSwitchCase` - adds or removes a template from the DOM tree
+      depending on the value of the property.
+    - `*ngSwitchDefault` - applies a default template if none of the other
+      `*ngSwitchCase` directives match.
+
+- An example of using the `ngSwitch` directive:
+
+    ```html
+    <div [ngSwitch]="name">
+      <p *ngSwitchCase="'Webcam'">
+        Product is used for video
+      </p>
+      <p *ngSwitchCase="'Microphone'">
+        Product is used for audio
+      </p>
+      <p *ngSwitchDefault>Product is for general use</p>
+    </div>
+    ```
+
+## Building Custom Directives
+
+- Custom directives allow advanced custom behaviours to be attached to DOM
+  elements.
+
+- If a directive has a template attached, then it becomes a
+  [component][ref-Component] - i.e. components are Angular directives with a
+  view.
+
+- Directives can be generated by running the `ng generate directive <name>`
+  CLI command.
+
+- Directives are TypeScript classes that have the `@Directive` decorator
+  applied:
+    - The `selector` property defines the CSS selector that works similarly
+      to the component selector, but surrounded in square brackets:
+
+        ```typescript
+        @Directive({
+          selector: '[appCopyright]'
+        })
+        export class CopyrightDirective {
+        }
+        ```
+
+    - The directive is used by specifying it (without square brackets) as an
+      attribute on an element:
+
+        ```html
+        <p appCopyright></p>
+        ```
+
+- The custom logic of the directive is contained in its constructor. This
+  can take an `ElementRef` to gain access to the element that has the
+  directive specified on it:
+
+    ```typescript
+    export class CopyrightDirective {
+      // `ElementRef` is an Angular service that provides access to the
+      // current element - it's injected here.
+      constructor(el: ElementRef) {
+        const currentYear = new Date().getFullYear();
+        const targetEl: HTMLElement = el.nativeElement;
+        targetEl.classList.add('copyright');
+        targetEl.textContent = `Copyright ©${currentYear} All Rights Reserved.`;
+      }
+    }
+    ```
+
+## Property Binding and Responding to Events
+
+- Angular provides decorators that can be used in directives to provide
+  bindings to properties and respond to events in the host element.
+
+- The `@HostBinding` decorator binds a value to the property of the native
+  host element. Similar to [property binding][ref-PropertyBinding].
+
+- The `@HostListener` directive binds to an event of the native host element.
+  Similar to [event binding][ref-EventBinding].
+
+- Example of `@HostBinding` and `@HostListener`:
+
+    ```typescript
+    export class NumericDirective {
+      // Binds the `currentClass` property to the `class` property
+      // of the input element
+      @HostBinding('class') currentClass = '';
+
+      // Binds this method to the `keypress` event on the current element
+      @HostListener('keypress', ['$event']) onKeyPress(event: KeyboardEvent) {
+        const charCode = event.key.charCodeAt(0);
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+          this.currentClass = 'invalid';
+          event.preventDefault();
+        } else {
+          this.currentClass = 'valid';
+        }
+      }
+    }
+    ```
+
+
+## Standalone Directives
+
+- By setting the `standalone` property on the `@Directive` directive to `true`,
+  it's possible to declare a _standalone directive_.
+
+- They can also be created by running `ng generate directive <name> --standalone`.
+
+- Standalone directives do not belong to a module, but instead need to be
+  imported into their usage location in the `imports` property of the
+  `@NgModule` that wants to use them.
+
 
 <!-- References -->
+[ref-LocalReferenceVariable]: AngularComponents.md#local-reference-variables-in-templates
+[ref-Component]: AngularComponents.md
+[ref-PropertyBinding]: AngularComponents.md#property-binding
+[ref-EventBinding]: AngularComponents.md#event-binding

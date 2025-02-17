@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {ProductDetailComponent} from "../product-detail/product-detail.component";
+import {Product} from "../product";
 
 @Component({
   selector: 'app-product-list',
@@ -8,11 +9,26 @@ import {ProductDetailComponent} from "../product-detail/product-detail.component
 })
 export class ProductListComponent implements AfterViewInit {
   @ViewChild(ProductDetailComponent) productDetail!: ProductDetailComponent;
-  selectedProduct = '';
+
+  products: Product[] = [
+    {
+      name: 'Webcam',
+      price: 100
+    },
+    {
+      name: 'Microphone',
+      price: 200
+    },
+    {
+      name: 'Wireless Keyboard',
+      price: 85
+    }];
+
+  selectedProduct: Product | undefined;
 
   ngAfterViewInit(): void {
     if (this.productDetail) {
-      console.log(`ProductListComponent#ngAfterViewInit() - ${this.productDetail.name}`);
+      console.log(`ProductListComponent#ngAfterViewInit() - ${this.productDetail.product?.name}`);
     } else {
       console.log(`ProductListComponent#ngAfterViewInit()`);
     }
@@ -20,5 +36,12 @@ export class ProductListComponent implements AfterViewInit {
 
   onBuy(name: string) {
     window.alert(`You just bought ${name}`)
+  }
+
+  addProduct() {
+    this.products.push({
+      name: "New Product",
+      price: 200
+    })
   }
 }

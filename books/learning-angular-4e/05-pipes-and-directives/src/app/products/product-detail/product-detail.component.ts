@@ -8,6 +8,7 @@ import {
   OnInit,
   Output, SimpleChanges
 } from '@angular/core';
+import {Product} from "../product";
 
 @Component({
   selector: 'app-product-detail',
@@ -16,15 +17,15 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductDetailComponent implements OnInit, OnDestroy, OnChanges {
-  @Input() public name = '';
+  @Input() product: Product | undefined;
   @Output() bought = new EventEmitter<string>();
 
   constructor() {
-    console.log(`ProductDetailComponent#constructor() - name = ${this.name}`);
+    console.log(`ProductDetailComponent#constructor() - name = ${this.product?.name}`);
   }
 
   ngOnInit(): void {
-    console.log(`ProductDetailComponent#ngOnInit() - name = ${this.name}`);
+    console.log(`ProductDetailComponent#ngOnInit() - name = ${this.product?.name}`);
   }
 
   ngOnDestroy(): void {
@@ -32,18 +33,24 @@ export class ProductDetailComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    const product = changes['name'];
+    const product = changes['product'];
     console.log(
       `ProductDetailComponent#ngOnChanges() - Changed from ${product.previousValue} to ${product.currentValue}`
     );
   }
 
   buy() {
-    this.bought.emit(this.name);
+    if (this.product) {
+      this.bought.emit(this.product!.name);
+    }
   }
 
   get productName(): string {
-    console.log(`Get ${this.name}`);
-    return this.name;
+    if (this.product) {
+      console.log(`Get ${this.product?.name}`);
+      return this.product!.name;
+    } else {
+      return '';
+    }
   }
 }

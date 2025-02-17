@@ -13,6 +13,7 @@
     * [Class Binding](#class-binding)
     * [Style Binding](#style-binding)
     * [Event Binding](#event-binding)
+    * [Two-way Binding](#two-way-binding)
   * [Component Inter-communication](#component-inter-communication)
     * [Overview](#overview-2)
     * [Input Binding](#input-binding)
@@ -241,6 +242,11 @@
 
 - The event inside parentheses - `(click)` - is called the _target event_,
   and the expression on the right is called the _template statement_.
+
+
+### Two-way Binding
+
+*TODO - Complete section - see [Two-way Binding Docs][ref-docs-TwoWayBinding]
 
 
 ## Component Inter-communication
@@ -517,3 +523,4 @@
 [ref-Directives]: AngularDirectives.md
 [ref-Observables]: AngularObservables.md
 [ref-Router]: AngularRouting.md
+[ref-docs-TwoWayBinding]: https://v15.angular.io/guide/two-way-binding

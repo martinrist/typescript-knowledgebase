@@ -1,5 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import {ProductListComponent} from "./products/product-list/product-list.component";
+import {ProductsModule} from "./products/products.module";
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -7,6 +9,9 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      imports: [
+        ProductsModule
+      ]
     }).compileComponents();
   });
 
@@ -27,6 +32,5 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('h1')?.textContent).toContain('Hello my-app');
-    // expect(compiled.innerText).toContain('Hello my-app');
   });
 });

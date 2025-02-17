@@ -11,10 +11,10 @@ import {SortPipe} from './sort.pipe';
     SortPipe,
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   exports: [
-    ProductListComponent
+    ProductListComponent,
   ]
 })
 export class ProductsModule { }

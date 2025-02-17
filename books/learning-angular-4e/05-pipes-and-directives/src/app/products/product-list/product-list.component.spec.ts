@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductListComponent } from './product-list.component';
+import {SortPipe} from "../sort.pipe";
 
 describe('ProductListComponent', () => {
   let component: ProductListComponent;
@@ -8,7 +9,7 @@ describe('ProductListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProductListComponent ]
+      declarations: [ ProductListComponent, SortPipe ],
     })
     .compileComponents();
 

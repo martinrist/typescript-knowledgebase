@@ -1,0 +1,16 @@
+<h2>Product List</h2>
+<ul>
+  <li *ngFor="let product of products | sort" (click)="selectedProduct = product">
+    {{ product.name }}
+  </li>
+</ul>
+<button (click)="selectedProduct = undefined">Clear selection</button>
+<button (click)="addProduct()">Add new product</button>
+<app-product-detail
+  *ngIf="selectedProduct; else noProductSelected"
+  [product]="selectedProduct"
+  (bought)="onBuy($event)">
+</app-product-detail>
+<ng-template #noProductSelected>
+  <p>No products selected!</p>
+</ng-template>

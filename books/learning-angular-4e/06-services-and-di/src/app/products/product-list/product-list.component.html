@@ -1,7 +1,7 @@
 <h2>Product List</h2>
 <ul>
-  <li *ngFor="let product of products | sort" (click)="selectedProduct = product">
-    {{ product.name }}
+  <li *ngFor="let product of products | sort; let i = index" (click)="selectedProduct = product">
+    <app-product-view [id]="i"></app-product-view>
   </li>
 </ul>
 <button (click)="selectedProduct = undefined">Clear selection</button>

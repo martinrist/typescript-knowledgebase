@@ -2,6 +2,7 @@ import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {ProductDetailComponent} from "../product-detail/product-detail.component";
 import {Product} from "../product";
 import {ProductsService} from "../products.service";
+import {ProductViewService} from "../product-view/product-view.service";
 
 @Component({
   selector: 'app-product-list',

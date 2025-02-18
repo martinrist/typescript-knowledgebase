@@ -18,7 +18,7 @@
 - [Components](AngularComponents.md)
 - [Pipes](AngularPipes.md)
 - [Directives](AngularDirectives.md)
-- *TODO* - [Services & Dependency Injection](AngularServices.md)
+- [Services & Dependency Injection](AngularServices.md)
 - *TODO* - [Observables](AngularObservables.md)
 - *TODO* - [The HTTP Client](AngularHttpClient.md)
 - *TODO* - [Routing & Navigation](AngularRouting.md)

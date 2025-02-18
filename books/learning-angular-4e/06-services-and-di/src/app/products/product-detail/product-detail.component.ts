@@ -9,19 +9,24 @@ import {
   Output, SimpleChanges
 } from '@angular/core';
 import {Product} from "../product";
+import {ProductsService} from "../products.service";
 
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  // Enabling this creates a separate instance of `ProductsService` for this component
+  // which means it won't reuse the version from the parent ProductListComponent.
+  // providers: [ProductsService]
 })
 export class ProductDetailComponent implements OnInit, OnDestroy, OnChanges {
   @Input() product: Product | undefined;
   @Output() bought = new EventEmitter<string>();
 
-  constructor() {
+  constructor(private productService: ProductsService) {
     console.log(`ProductDetailComponent#constructor() - name = ${this.product?.name}`);
+    console.log(`ProductDetailComponent: Using ProductService #${productService.serviceId}`);
   }
 
   ngOnInit(): void {

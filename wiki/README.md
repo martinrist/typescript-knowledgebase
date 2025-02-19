@@ -19,7 +19,7 @@
 - [Pipes](AngularPipes.md)
 - [Directives](AngularDirectives.md)
 - [Services & Dependency Injection](AngularServices.md)
-- *TODO* - [Observables](AngularObservables.md)
+- [Observables](AngularObservables.md)
 - *TODO* - [The HTTP Client](AngularHttpClient.md)
 - *TODO* - [Routing & Navigation](AngularRouting.md)
 - *TODO* - [Forms](AngularForms.md)

@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+.valid {
+  border-bottom: solid green;
+}
+
+.invalid {
+  border-bottom: solid red;
+}
+
+a {
+  color: #1976d2;
+  text-decoration: none;
+  margin: 5px;
+}
+a:hover {
+  opacity: 0.8;
+}
+
+.active {
+  color: black
+}

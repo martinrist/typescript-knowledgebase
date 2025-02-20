@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import {Product} from "../product";
 import {ProductsService} from "../products.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-product-detail',
@@ -21,16 +22,18 @@ import {ProductsService} from "../products.service";
   // providers: [ProductsService]
 })
 export class ProductDetailComponent implements OnInit, OnDestroy, OnChanges {
-  @Input() product: Product | undefined;
+  @Input() id = -1
   @Output() bought = new EventEmitter<string>();
 
+  product$: Observable<Product> | undefined;
+
   constructor(private productService: ProductsService) {
-    console.log(`ProductDetailComponent#constructor() - name = ${this.product?.name}`);
+    console.log(`ProductDetailComponent#constructor() - productId = ${this.id}`);
     console.log(`ProductDetailComponent: Using ProductService #${productService.serviceId}`);
   }
 
   ngOnInit(): void {
-    console.log(`ProductDetailComponent#ngOnInit() - name = ${this.product?.name}`);
+    console.log(`ProductDetailComponent#ngOnInit() - productId = ${this.id}`);
   }
 
   ngOnDestroy(): void {
@@ -38,24 +41,14 @@ export class ProductDetailComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    const product = changes['product'];
-    console.log(
-      `ProductDetailComponent#ngOnChanges() - Changed from ${product.previousValue} to ${product.currentValue}`
-    );
+    // const product = changes['product'];
+    // console.log(
+    //   `ProductDetailComponent#ngOnChanges() - Changed from ${product.previousValue} to ${product.currentValue}`
+    // );
+    this.product$ = this.productService.getProduct(this.id);
   }
 
   buy() {
-    if (this.product) {
-      this.bought.emit(this.product!.name);
-    }
-  }
-
-  get productName(): string {
-    if (this.product) {
-      console.log(`Get ${this.product?.name}`);
-      return this.product!.name;
-    } else {
-      return '';
-    }
+    this.bought.emit();
   }
 }

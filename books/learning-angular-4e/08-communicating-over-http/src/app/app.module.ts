@@ -6,18 +6,19 @@ import {ProductsModule} from "./products/products.module";
 import {CopyrightDirective} from './copyright.directive';
 import {NumericDirective} from './numeric.directive';
 import {KeyLoggerComponent} from './key-logger/key-logger.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
     AppComponent,
     CopyrightDirective,
     NumericDirective,
-    KeyLoggerComponent,
     KeyLoggerComponent
   ],
   imports: [
     BrowserModule,
-    ProductsModule
+    ProductsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

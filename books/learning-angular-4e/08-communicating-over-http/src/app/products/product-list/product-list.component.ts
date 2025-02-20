@@ -7,8 +7,7 @@ import {Subscription} from "rxjs";
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css'],
-  providers: [ProductsService]
+  styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(ProductDetailComponent) productDetail!: ProductDetailComponent;
@@ -28,7 +27,7 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     if (this.productDetail) {
-      console.log(`ProductListComponent#ngAfterViewInit() - ${this.productDetail.product?.name}`);
+      console.log(`ProductListComponent#ngAfterViewInit() - ${this.productDetail.id}`);
     } else {
       console.log(`ProductListComponent#ngAfterViewInit()`);
     }
@@ -44,6 +43,7 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
 
   addProduct() {
     this.products.push({
+      id: Math.floor(Math.random() * 10000),
       name: "New Product",
       price: 200
     })

@@ -41,12 +41,8 @@ export class ProductListComponent implements OnInit, AfterViewInit, OnDestroy {
     window.alert(`You just bought ${name}`)
   }
 
-  addProduct() {
-    this.products.push({
-      id: Math.floor(Math.random() * 10000),
-      name: "New Product",
-      price: 200
-    })
+  onAdd(product: Product) {
+    this.products.push(product);
   }
 
   private getProducts() {

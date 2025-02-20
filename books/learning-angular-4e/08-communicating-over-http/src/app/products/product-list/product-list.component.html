@@ -5,7 +5,6 @@
   </li>
 </ul>
 <button (click)="selectedProduct = undefined">Clear selection</button>
-<button (click)="addProduct()">Add new product</button>
 <app-product-detail
   *ngIf="selectedProduct; else noProductSelected"
   [id]="selectedProduct.id"
@@ -14,5 +13,6 @@
 <ng-template #noProductSelected>
   <p>No products selected!</p>
 </ng-template>
+<app-product-create (added)="onAdd($event)"></app-product-create>
 <h2>Favorites</h2>
 <app-favorites></app-favorites>

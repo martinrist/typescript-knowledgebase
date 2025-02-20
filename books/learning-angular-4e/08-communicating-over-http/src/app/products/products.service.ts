@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Product} from './product';
-import {map, Observable, of} from "rxjs";
+import {map, Observable, of, pipe} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 
 interface ProductDTO {
@@ -34,6 +34,15 @@ export class ProductsService {
     return this.http.get<ProductDTO>(`${this.productsUrl}/${id}`).pipe(
       map(this.convertToProduct)
     )
+  }
+
+  addProduct(name: string, price: number): Observable<Product> {
+    return this.http.post<ProductDTO>(this.productsUrl, {
+      title: name,
+      price: price
+    }).pipe(
+      map(this.convertToProduct)
+    );
   }
 
   private convertToProduct(dto: ProductDTO): Product {

@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import {Product} from "../product";
 import {ProductsService} from "../products.service";
-import {Observable, switchMap} from "rxjs";
+import {Observable, of, switchMap} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
@@ -40,10 +40,13 @@ export class ProductDetailComponent implements OnInit, OnDestroy, OnChanges {
   ngOnInit(): void {
     console.log(`ProductDetailComponent#ngOnInit() - productId = ${this.id}`);
 
-    this.product$ = this.route.paramMap.pipe(
-      switchMap(params => {
-        return this.productService.getProduct(Number(params.get('id')));
-      })
+    // this.product$ = this.route.paramMap.pipe(
+    //   switchMap(params => {
+    //     return this.productService.getProduct(Number(params.get('id')));
+    //   })
+    // );
+    this.product$ = this.route.data.pipe(
+      switchMap(data => of(data['product']))
     );
   }
 

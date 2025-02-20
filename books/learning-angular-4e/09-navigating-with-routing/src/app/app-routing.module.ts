@@ -6,10 +6,16 @@ import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {ProductDetailComponent} from "./products/product-detail/product-detail.component";
 import {authGuard} from "./auth/auth.guard";
 import {checkoutGuard} from "./checkout.guard";
+import {productDetailResolver} from "./products/product-detail.resolver";
 
 const routes: Routes = [
   { path: 'products', component: ProductListComponent },
-  { path: 'products/:id', component: ProductDetailComponent },
+  {
+    path: 'products/:id',
+    component: ProductDetailComponent,
+    // This route uses a resolver to prefetch product data
+    resolve: productDetailResolver
+  },
   { path: '', redirectTo: '/products', pathMatch: 'full' },
   {
     path: 'cart',

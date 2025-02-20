@@ -12,7 +12,8 @@ import {
 import {Product} from "../product";
 import {ProductsService} from "../products.service";
 import {Observable, switchMap} from "rxjs";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {CartService} from "../../cart/cart.service";
 
 @Component({
   selector: 'app-product-detail',
@@ -31,7 +32,9 @@ export class ProductDetailComponent implements OnInit, OnDestroy, OnChanges {
 
   constructor(
     private productService: ProductsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router,
+    private cartService: CartService
   ) {
     console.log(`ProductDetailComponent#constructor() - productId = ${this.id}`);
     console.log(`ProductDetailComponent: Using ProductService #${productService.serviceId}`);
@@ -58,8 +61,9 @@ export class ProductDetailComponent implements OnInit, OnDestroy, OnChanges {
     this.product$ = this.productService.getProduct(this.id);
   }
 
-  buy() {
-    this.bought.emit();
+  buy(product: Product) {
+    this.cartService.addProduct(product);
+    this.router.navigate(['/products']);
   }
 
   changePrice(product: Product, price: number) {

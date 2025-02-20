@@ -10,6 +10,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
 import {CartComponent} from './cart/cart.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
     BrowserModule,
     ProductsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

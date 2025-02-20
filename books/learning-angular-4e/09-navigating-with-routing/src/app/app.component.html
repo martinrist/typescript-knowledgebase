@@ -1,5 +1,7 @@
 <h1>Hello {{ title }}</h1>
-<app-product-list></app-product-list>
+<a routerLink="/products" routerLinkActive="active">Products</a>
+<a routerLink="/cart" routerLinkActive="active">Cart</a>
+<router-outlet></router-outlet>
 <p appCopyright></p>
 <h2>Numeric field</h2>
 <input appNumeric/>

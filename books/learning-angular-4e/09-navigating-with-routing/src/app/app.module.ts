@@ -7,18 +7,24 @@ import {CopyrightDirective} from './copyright.directive';
 import {NumericDirective} from './numeric.directive';
 import {KeyLoggerComponent} from './key-logger/key-logger.component';
 import {HttpClientModule} from "@angular/common/http";
+import {AppRoutingModule} from "./app-routing.module";
+import { CartComponent } from './cart/cart.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CopyrightDirective,
     NumericDirective,
-    KeyLoggerComponent
+    KeyLoggerComponent,
+    CartComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     ProductsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -7,6 +7,7 @@ import {FavoritesComponent} from './favorites/favorites.component';
 import {ProductViewComponent} from './product-view/product-view.component';
 import {ProductCreateComponent} from './product-create/product-create.component';
 import {RouterModule} from "@angular/router";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -17,10 +18,11 @@ import {RouterModule} from "@angular/router";
     ProductViewComponent,
     ProductCreateComponent,
   ],
-  imports: [
-    CommonModule,
-    RouterModule
-  ],
+    imports: [
+        CommonModule,
+        RouterModule,
+        FormsModule
+    ],
   exports: [
     ProductListComponent,
   ]

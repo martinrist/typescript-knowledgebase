@@ -2,6 +2,11 @@
   <h2>Product Details</h2>
   <h3>{{ product.name | uppercase }}</h3>
   <span>{{ product.price | currency:'EUR' }}</span>
+  <form (ngSubmit)="changePrice(product, product.price)">
+    <label for="price">New price:</label>
+    <input placeholder="New price" id="price" name="price" [(ngModel)]="product.price">
+    <button type="submit">Change</button>
+  </form>
   <div [ngSwitch]="product.name">
     <p *ngSwitchCase="'Webcam'">
       Product is used for video

@@ -61,4 +61,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy, OnChanges {
   buy() {
     this.bought.emit();
   }
+
+  changePrice(product: Product, price: number) {
+    alert(`Changing price of ${product.name} to ${price}`);
+  }
 }

@@ -20,9 +20,9 @@
 - [Directives](AngularDirectives.md)
 - [Services & Dependency Injection](AngularServices.md)
 - [Observables](AngularObservables.md)
-- *TODO* - [The HTTP Client](AngularHttpClient.md)
-- *TODO* - [Routing & Navigation](AngularRouting.md)
-- *TODO* - [Forms](AngularForms.md)
+- [The HTTP Client](AngularHttpClient.md)
+- [Routing & Navigation](AngularRouting.md)
+- [Forms](AngularForms.md)
 
 
 ## Formatting Conventions

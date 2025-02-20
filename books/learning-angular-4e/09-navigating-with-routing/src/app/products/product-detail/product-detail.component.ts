@@ -6,11 +6,13 @@ import {
   OnChanges,
   OnDestroy,
   OnInit,
-  Output, SimpleChanges
+  Output,
+  SimpleChanges
 } from '@angular/core';
 import {Product} from "../product";
 import {ProductsService} from "../products.service";
-import {Observable} from "rxjs";
+import {Observable, switchMap} from "rxjs";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-product-detail',
@@ -27,13 +29,22 @@ export class ProductDetailComponent implements OnInit, OnDestroy, OnChanges {
 
   product$: Observable<Product> | undefined;
 
-  constructor(private productService: ProductsService) {
+  constructor(
+    private productService: ProductsService,
+    private route: ActivatedRoute
+  ) {
     console.log(`ProductDetailComponent#constructor() - productId = ${this.id}`);
     console.log(`ProductDetailComponent: Using ProductService #${productService.serviceId}`);
   }
 
   ngOnInit(): void {
     console.log(`ProductDetailComponent#ngOnInit() - productId = ${this.id}`);
+
+    this.product$ = this.route.paramMap.pipe(
+      switchMap(params => {
+        return this.productService.getProduct(Number(params.get('id')));
+      })
+    );
   }
 
   ngOnDestroy(): void {

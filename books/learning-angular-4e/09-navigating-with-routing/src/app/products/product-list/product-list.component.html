@@ -1,18 +1,10 @@
 <h2>Product List</h2>
 <ul>
-  <li *ngFor="let product of products | sort; let i = index" (click)="selectedProduct = product">
-    {{ product.name }}
+  <li *ngFor="let product of products | sort">
+    <a [routerLink]="['/products', product.id]">{{ product.name }}</a>
   </li>
 </ul>
 <button (click)="selectedProduct = undefined">Clear selection</button>
-<app-product-detail
-  *ngIf="selectedProduct; else noProductSelected"
-  [id]="selectedProduct.id"
-  (bought)="onBuy($event)">
-</app-product-detail>
-<ng-template #noProductSelected>
-  <p>No products selected!</p>
-</ng-template>
 <app-product-create (added)="onAdd($event)"></app-product-create>
 <h2>Favorites</h2>
 <app-favorites></app-favorites>

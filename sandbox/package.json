@@ -1,0 +1,19 @@
+{
+  "name": "sandbox",
+  "description": "Sandbox project for trying out Typescript things",
+  "version": "1.0.0",
+  "author": "Martin Rist",
+  "homepage": "https://github.com/martinrist/typescript-knowledgebase",
+  "license": "ISC",
+  "scripts": {
+    "tsc": "tsc",
+    "tsc:watch": "tsc --watch",
+    "tsx": "tsx",
+    "tsx:watch": "tsx --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3",
+    "tsx": "^4.19.3"
+  }
+}

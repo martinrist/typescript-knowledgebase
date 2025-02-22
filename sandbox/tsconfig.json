@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "build",
+
+    // See: https://www.typescriptlang.org/tsconfig/#strict
+    "strict": true,
+
+    // Emit .d.ts and sourcemap files
+    // See:
+    // - https://www.typescriptlang.org/tsconfig/#declaration
+    // - https://www.typescriptlang.org/tsconfig/#sourceMap
+    "declaration": true,
+    "sourceMap": true,
+
+    // See: https://www.typescriptlang.org/tsconfig/#node16nodenext
+    // Implies:
+    //   "moduleResolution": "nodenext",
+    //   "target": "esnext"
+    //   "esModuleInterop": true
+    // (see https://www.typescriptlang.org/docs/handbook/modules/reference.html#implied-and-enforced-options)
+    "module": "nodenext",
+
+  }
+}

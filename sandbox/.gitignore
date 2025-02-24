@@ -5,3 +5,4 @@ build/
 .idea/
 .env
 *.log
+coverage

@@ -1,7 +1,7 @@
 {
   // See: https://2ality.com/2025/01/tsconfig-json.html for details
 
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "test/**/*"],
 
   "compilerOptions": {
 
@@ -30,9 +30,6 @@
     //   "target": "esnext"
     //   "esModuleInterop": true
     // (see https://www.typescriptlang.org/docs/handbook/modules/reference.html#implied-and-enforced-options)
-    //
-    // With these settings,
-    "module": "nodenext"
-
+    "module": "nodenext",
   }
 }

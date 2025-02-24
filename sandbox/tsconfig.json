@@ -1,7 +1,13 @@
 {
+  // See: https://2ality.com/2025/01/tsconfig-json.html for details
+
+  "include": ["src/**/*"],
+
   "compilerOptions": {
-    "rootDir": "src",
-    "outDir": "build",
+
+    // See: https://2ality.com/2025/01/tsconfig-json.html#where-are-the-output-files-written%3F
+    "rootDir": ".",
+    "outDir": "dist",
 
     // See: https://www.typescriptlang.org/tsconfig/#strict
     "strict": true,
@@ -9,17 +15,24 @@
     // Emit .d.ts and sourcemap files
     // See:
     // - https://www.typescriptlang.org/tsconfig/#declaration
+    // - https://2ality.com/2025/01/tsconfig-json.html#emitting-.d.ts-files-(e.g.-for-libraries)
     // - https://www.typescriptlang.org/tsconfig/#sourceMap
+    // - https://2ality.com/2025/01/tsconfig-json.html#emitting-source-maps
     "declaration": true,
     "sourceMap": true,
 
-    // See: https://www.typescriptlang.org/tsconfig/#node16nodenext
-    // Implies:
+    // See:
+    // - https://www.typescriptlang.org/tsconfig/#node16nodenext
+    // - https://2ality.com/2025/01/tsconfig-json.html#module-system
+    //
+    // Note: "module: nodenext" implies the following additional settings:
     //   "moduleResolution": "nodenext",
     //   "target": "esnext"
     //   "esModuleInterop": true
     // (see https://www.typescriptlang.org/docs/handbook/modules/reference.html#implied-and-enforced-options)
-    "module": "nodenext",
+    //
+    // With these settings,
+    "module": "nodenext"
 
   }
 }

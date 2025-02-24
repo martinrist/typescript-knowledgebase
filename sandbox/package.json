@@ -8,6 +8,7 @@
   "type": "module",
   "scripts": {
     "clean": "rimraf build dist",
+    "prettier": "prettier \"{src,tests}/**/*.ts\" --config .prettierrc --write",
     "tsc": "tsc",
     "tsc:watch": "tsc --watch",
     "tsx": "tsx",
@@ -15,6 +16,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
+    "prettier": "^3.5.2",
     "rimraf": "^6.0.1",
     "tsx": "^4.19.3",
     "typescript": "^5.7.3"

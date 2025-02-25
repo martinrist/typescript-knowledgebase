@@ -1,5 +1,4 @@
-import { describe, expect, it } from 'vitest';
-import { formatMessage } from '../src/logger.js';
+import { formatMessage } from '../src/logger';
 
 describe('format message', () => {
   it('should return unchanged message when called with no arguments', () => {

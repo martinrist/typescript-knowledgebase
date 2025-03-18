@@ -14,19 +14,25 @@
     "lint": "eslint src",
     "tsx": "tsx",
     "tsx:watch": "tsx --watch",
-    "test": "vitest",
+    "test": "mocha",
+    "test:watch": "mocha --parallel --watch --watch-files .",
     "coverage": "vitest run --coverage"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
-    "@vitest/coverage-v8": "^3.0.6",
+    "@types/chai": "^5.2.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^22.13.10",
+    "chai": "^5.2.0",
     "eslint": "^9.21.0",
     "globals": "^16.0.0",
+    "mocha": "^11.1.0",
     "prettier": "^3.5.2",
     "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "tsx": "^4.19.3",
     "typescript": "^5.7.3",
-    "typescript-eslint": "^8.24.1",
-    "vitest": "^3.0.6"
+    "typescript-eslint": "^8.24.1"
   }
 }

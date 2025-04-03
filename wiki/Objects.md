@@ -2,15 +2,219 @@
 
 ## Contents
 <!-- TOC -->
-* [Objects](#objects)
-  * [Contents](#contents)
-  * [Object Types](#object-types)
-  * [Structural Typing](#structural-typing)
-  * [Optional Properties](#optional-properties)
-  * [Unions of Object Types](#unions-of-object-types)
-  * [Discriminated Unions](#discriminated-unions)
-  * [Intersection Types](#intersection-types)
+- [Objects](#objects)
+  - [Contents](#contents)
+  - [JavaScript Fundamentals](#javascript-fundamentals)
+    - [Overview](#overview)
+    - [Prototypes](#prototypes)
+    - [Testing Properties](#testing-properties)
+    - [Enumerating Properties](#enumerating-properties)
+    - [Serialisation \& Deserialiastion](#serialisation--deserialiastion)
+    - [Object Methods](#object-methods)
+    - [Extended Object Literal Syntax](#extended-object-literal-syntax)
+  - [Object Types](#object-types)
+  - [Structural Typing](#structural-typing)
+  - [Optional Properties](#optional-properties)
+  - [Unions of Object Types](#unions-of-object-types)
+  - [Discriminated Unions](#discriminated-unions)
+  - [Intersection Types](#intersection-types)
 <!-- TOC -->
+
+
+## JavaScript Fundamentals
+
+### Overview
+
+- JavaScript objects are composite values, consisting of unordered collections
+  of _properties_, where each property is a key-value pair:
+    - Keys are normally `string` values (although they can also be `Symbol`s).
+    - Objects are mutable - their properties can be added, modified, or deleted
+      after creation.
+    - Objects are passed by reference, not by value.
+    - Object properties can be any valid JavaScript value (strings, numbers,
+      booleans, functions, other objects, etc).
+
+
+### Object Creation
+
+- Objects can be created various ways:
+    - With object literals - e.g. `{ x: 0, y: 1 }`
+    - With the `new` keyword - e.g. `new Object()`, `new Date()`
+    - With the `Object.create()` function - e.g. `Object.create({x: 1, y: 2})`
+
+
+### Property Access & Modification
+
+- Properties can be accessed using dot notation (`obj.property`) or bracket
+  notation (`obj['property']`):
+    - Accessing properties that do not exist on an object or in its prototype
+      chain returns `undefined`.
+
+- ES2020 supports conditional property access with `?.`, e.g.
+  `book?.author?.surname`.
+
+- To create or set a property, use the dot or bracket notation on the left hand
+  side of an assignment expresion - e.g. `obj.property = newValue` or
+  `obj['property'] = newValue`.
+
+- Own properties (but not inherited ones) can be deleted using the `delete`
+  operator, which takes a property access expression - e.g. `delete book.author`
+
+
+### Prototypes
+
+- Almost every JavaScript object has a second object - its _prototype_ -
+  associated with it, from which it inherits properties:
+    - All objects created from object literals have `Object.prototype` as their
+      prototype.
+    - `Date`s have `Date.prototype` as their prototype, with similar things for
+      for other literals like arrays, functions, regexes.
+    - Linked series of protoype objects form a _prototype chain_.
+    - `Object.create()` creates a new object using its first argument as the
+      prototype for that object.
+
+- JavaScript objects have a set of _own properties_ and also those inherited
+  from the object's prototype:
+    - When accessing properties, JavaScript looks up the prototype chain if the
+      property can't be found on the queried object.
+    - Howevever, when properties are set, they are always set on the called
+      object.
+    - In other words, inheritance works for querying but not modifying
+      properties.
+
+
+### Testing Properties
+
+- To test whether an object has a property (own or inherited) with a given name,
+  use the `in` operator - e.g. `'x' in { x: 1 }`
+
+- To test whehter an object has a property as an _own property_ (rather than an
+  inherited one), use the `hasOwnProperty()` method.
+
+
+### Enumerating Properties
+
+- To enumerate both own and inherited properties of an object, use the `for/in`
+  loop:
+
+    ```javascript
+    let o = { x: 1, y: 2, z: 3 };
+    for(const p in o) {
+      console.log(p);
+    }
+    ```
+
+- Alternatively, get an array of property names using any of the following
+  methods, then loop through that with `for/of`:
+    - `Object.keys()`
+    - `Object.getOwnPropertyNames()`
+    - `Object.getOwnPropertySymbols()`
+    - `Reflect.ownKeys()`
+
+
+### Serialisation & Deserialiastion
+
+- Objects can be serialised to JSON using `JSON.stringify(o)` and can be
+  deserialised from JSON using `JSON.parse(str)`.
+
+- Optional second arguments can be used to customise the (de)serialisation
+  process by specifying a list of configuration properties.
+
+
+### Object Methods
+
+- All JavaScript objects (except those explicitly created without a prototype)
+  inherit properties from `Object.prototype`:
+    - Most of these are common methods that are intended to be replaced by
+      other more specialised versions.
+
+- `toString()` provides a `string`-based description of the object, used when
+  JavaScript needs a `string` representation.
+
+- `toLocaleString()` is a locale-sensitive version of `toString()`.
+
+- `valueOf()` is called when JavaScript needs to convert an object to some
+  primitive type other than a `string`.
+
+- `toJSON()` is called by `JSON.stringify()` when a serialisable representation
+  of an object is required.
+
+
+### Extended Object Literal Syntax
+
+- ES6 introduces a number of features to make writing object literals more
+  ergonomic.
+
+- _Shorthand properties_ allow easier assignment to an object with properties
+  the same as the variables being used to assign them:
+
+    ```javascript
+    // Full syntax
+    const x = 1, y = 2;
+    let o1 = { x: x, y: y };
+
+    // Shorthand properties
+    let o2 = { x, y };
+    ```
+
+- _Computed property names_ allow the use of a square-brace-delimited arbitrary
+  expression used to compute property names:
+
+    ```javascript
+    const PROPERTY_NAME = 'p1';
+    function computePropertyName() { return 'p' + 2; }
+
+    let p = {
+      [PROPERTY_NAME]: 1,
+      [computePropertyName()]: 2
+    }
+    ```
+
+- In ES2018 and later, we can copy the properties of an existing object into a
+  new one using the _spread operator_ `...` inside an object literal:
+
+    ```javascript
+    let position = { x: 0, y: 0 };
+    let dimensions = { width: 100, height: 75 };
+    let rect = { ...position, ...dimensions };
+
+    // The latest value overwrites earlier ones
+    let o = { x: 1 };
+    let p = { x: 0, ...o };
+    p.x                         // => 1
+    ```
+
+- In ES6, the object literal (and class definition syntax) allow _shorthand
+  methods_ to be declared:
+
+    ```javascript
+    // Longhand version
+    let square = {
+      area: function() { return this.side * this.side; },
+      side: 10
+    }
+
+    // Shorthand version
+    let sqaure = {
+      area() { return this.side * this.side; },
+      side: 10
+    }
+    ```
+
+- As well as _data properties_ (with a name and ordinary value), JavaScript
+  supports _accessor properties_ which have one or two accessor methods - a
+  _getter_ and / or _setter_:
+
+    ```javascript
+    let o = {
+      // An ordinary data property
+      dataProp: value,
+
+      // An accessor property defined as a pair of functions
+      get accessorProp() { return this.dataProp; }
+      set accessorProp(value) { this.dataProp = value; }
+    }
+    ```
 
 
 ## Object Types

@@ -1,6 +1,9 @@
 {
     "loader": "ts-node/esm",
-    "spec": "test/**/*.ts",
+    "spec": [
+      "test/**/*.ts",
+      "test/**/*.js"
+    ],
     "node-option": [
         "loader=ts-node/esm",
         "no-warnings=ExperimentalWarning",

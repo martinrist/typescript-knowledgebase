@@ -6,7 +6,9 @@ describe('JavaScript Object fundamentals', () => {
     it('All object literals have the same prototype', () => {
       const first = { x: 1, y: 2 };
       const second = { x: 1, y: 2 };
-      expect(Object.getPrototypeOf(first)).to.equal(Object.getPrototypeOf(second));
+      expect(Object.getPrototypeOf(first)).to.equal(
+        Object.getPrototypeOf(second),
+      );
     });
 
     it('Object literals have Object.prototype as their prototype', () => {
@@ -128,11 +130,10 @@ describe('JavaScript Object fundamentals', () => {
   });
 
   describe('Enumerating properties', () => {
-    it('Object.keys() returns an array of an object\'s own enumerable properties', () => {
+    it("Object.keys() returns an array of an object's own enumerable properties", () => {
       const obj = { x: 1, y: 2 };
       expect(Object.keys(obj)).to.deep.equal(['x', 'y']);
     });
-
   });
 
   describe('Serialising objects', () => {
@@ -155,20 +156,25 @@ describe('JavaScript Object fundamentals', () => {
 
     it('toString() can be overridden to provide a custom description', () => {
       const obj = { x: 1, y: 2 };
-      obj.toString = function() { return `{ x: ${this.x}, y: ${this.y} }`; };
+      obj.toString = function () {
+        return `{ x: ${this.x}, y: ${this.y} }`;
+      };
       expect(obj.toString()).to.equal('{ x: 1, y: 2 }');
     });
 
     it('addition operator coerces its operands to primitives and then calls toString()', () => {
       const obj = { x: 1, y: 2 };
-      obj.toString = function() { return `{ x: ${this.x}, y: ${this.y} }`; };
+      obj.toString = function () {
+        return `{ x: ${this.x}, y: ${this.y} }`;
+      };
       expect('Value: ' + obj).to.equal('Value: { x: 1, y: 2 }');
     });
   });
 
   describe('Extended object literal syntax', () => {
     it('Shorthand properties', () => {
-      const x = 1, y = 2;
+      const x = 1,
+        y = 2;
       const obj = { x, y };
       expect(obj.x).to.equal(1);
       expect(obj.y).to.equal(2);
@@ -176,7 +182,9 @@ describe('JavaScript Object fundamentals', () => {
 
     it('Computed property names', () => {
       const PROPERTY_NAME = 'p1';
-      function computePropertyName() { return 'p' + 2; }
+      function computePropertyName() {
+        return 'p' + 2;
+      }
       const obj = { [PROPERTY_NAME]: 1, [computePropertyName()]: 2 };
 
       expect(obj.p1).to.equal(1);

@@ -10,7 +10,7 @@
     "clean": "rimraf build dist coverage",
     "build": "tsc",
     "build:watch": "tsc --watch",
-    "prettier": "prettier \"{src,tests}/**/*.ts\" --config .prettierrc --write",
+    "prettier": "prettier \"{src,test}/**/*.{ts,js}\" --config .prettierrc --write",
     "lint": "eslint src",
     "tsx": "tsx",
     "tsx:watch": "tsx --watch",

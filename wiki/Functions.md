@@ -2,16 +2,83 @@
 
 ## Contents
 <!-- TOC -->
-* [Functions](#functions)
-  * [Contents](#contents)
-  * [Function Parameters](#function-parameters)
-  * [Return Types](#return-types)
-  * [Function Types](#function-types)
-  * [Function Overloads](#function-overloads)
+- [Functions](#functions)
+  - [Contents](#contents)
+  - [JavaScript Fundamentals](#javascript-fundamentals)
+    - [Overview](#overview)
+    - [Defining Functions (§8.1)](#defining-functions-81)
+    - [Invoking Functions (§8.2)](#invoking-functions-82)
+    - [Function Arguments \& Parameters (§8.3)](#function-arguments--parameters-83)
+    - [Functions as Values (§8.4)](#functions-as-values-84)
+    - [Functions as Namespaces (§8.5)](#functions-as-namespaces-85)
+    - [Function Properties, Methods \& Constructor (§8.7)](#function-properties-methods--constructor-87)
+    - [Functional Programming (§8.8)](#functional-programming-88)
+  - [Typing Function Parameters](#typing-function-parameters)
+  - [Return Types](#return-types)
+  - [Function Types](#function-types)
+  - [Function Overloads](#function-overloads)
 <!-- TOC -->
 
 
-## Function Parameters
+## JavaScript Fundamentals
+
+### Overview
+
+- A _function_ is ablock of code that is defined once but may be _invoked_ any
+  number of times:
+    - Function definitions define _parameters_ that work as local variables in
+      the function body.
+    - Function invocations provide _arguments_ for the function's parameters.
+    - Each invocation also has an _invocation_ context - the values of the
+      `this` keyword in the function body.
+
+- Functions that are assinged to a property of an object are known as _methods_:
+    - When a function is invoked on or through and object, that object is the
+      invocation context.
+
+
+### Defining Functions (§8.1)
+
+*TODO: Complete section*
+
+
+### Invoking Functions (§8.2)
+
+*TODO: Complete section*
+
+
+### Function Arguments & Parameters (§8.3)
+
+*TODO: Complete section*
+
+
+### Functions as Values (§8.4)
+
+*TODO: Complete section*
+
+
+### Functions as Namespaces (§8.5)
+
+*TODO: Complete section*
+
+
+### Closures (§8.6)
+
+*TODO: Complete section*
+
+
+### Function Properties, Methods & Constructor (§8.7)
+
+*TODO: Complete section*
+
+
+### Functional Programming (§8.8)
+
+*TODO: Complete section*
+
+
+
+## Typing Function Parameters
 
 - Like variables, TypeScript allows types of function parameters to be declared
   with a type annotation:

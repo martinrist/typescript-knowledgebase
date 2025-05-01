@@ -2,18 +2,97 @@
 
 ## Contents
 <!-- TOC -->
-* [Classes](#classes)
-  * [Contents](#contents)
-  * [Class Methods](#class-methods)
-  * [Class Properties](#class-properties)
-  * [Class Parameter Properties](#class-parameter-properties)
-  * [Classes as Types](#classes-as-types)
-  * [Classes & Interfaces](#classes--interfaces)
-  * [Extending Classes](#extending-classes)
-  * [Overriding Properties & Methods](#overriding-properties--methods)
-  * [Abstract Classes](#abstract-classes)
-  * [Member Visibility](#member-visibility)
+- [Classes](#classes)
+  - [Contents](#contents)
+  - [JavaScript Fundamentals](#javascript-fundamentals)
+  - [Class Methods](#class-methods)
+  - [Class Properties](#class-properties)
+  - [Class Parameter Properties](#class-parameter-properties)
+  - [Classes as Types](#classes-as-types)
+  - [Classes \& Interfaces](#classes--interfaces)
+  - [Extending Classes](#extending-classes)
+  - [Overriding Properties \& Methods](#overriding-properties--methods)
+  - [Abstract Classes](#abstract-classes)
+  - [Member Visibility](#member-visibility)
 <!-- TOC -->
+
+
+## JavaScript Fundamentals
+
+### Overview
+
+- First-class support for classes in JavaScript was introduced in ES6 with the
+  `class` keyword.
+
+- Typical example of an ES6 class, demonstrating some key features:
+
+    ```javascript
+    class Range {
+        constructor(from, to) {
+            // Store the start and end points (state) of this new range object.
+            // These are noninherited properties that are unique to this object.
+            this.from = from;
+            this.to = to;
+        }
+
+        // Return true if x is in the range, false otherwise
+        // This method works for textual and Date ranges as well as numeric.
+        includes(x) {
+            return this.from <= x && x <= this.to;
+        }
+
+        // A generator function that makes instances of the class iterable.
+        // Note that it only works for numeric ranges.
+        *[Symbol.iterator]() {
+            for(let x = Math.ceil(this.from); x <= this.to; x++) yield x;
+        }
+
+        // Return a string representation of the range
+        toString() {
+            return `(${this.from}...${this.to})`;
+        }
+
+        // static methods don't need an object instance to invoke them
+        static parse(s) {
+            let matches = s.match(/^\((\d+)\.\.\.(\d+)\)$/);
+            if (!matches) {
+                throw new TypeError(`Cannot parse Range from "${s}".`)
+            }
+            return new Range(parseInt(matches[1]), parseInt(matches[2]));
+        }
+    }
+    ```
+
+
+### Adding Methods to Existing Classes
+
+- JavaScript's prototype-based inheritance mechanism is dynamic:
+    - An object inherits properties from its prototype
+    - If the prototype later changes, the object gets these changes.
+    - This means we can add new methods to existing classes by adding them
+      to the prototype.
+
+- However, doing this is often considered bad practice, because it could cause
+  inconsistencies in the future.
+
+
+
+### Subclassing in ES6
+
+- To create a subclass in ES6, declare the class with the `extends` keyword,
+  and use `super` to refer to the the superclass (e.g. in subclass method
+  and constructor implementations).
+
+- There are some rules around using `super()` in constructors:
+    - If using `extends`, the subclass must use `super()` in the constructor to
+      call the superclass's constructor.
+    - If you don't define a constructor in the subclass, one will be
+      automatically defined that takes whatever values are passed to it, and
+      passes those onto a `super()` call.
+    - You may not use `this` in the subclass constructor until after the call
+      to `super()` - this is to ensure superclasses get fully-initialised
+      before any subclass methods can be called.
+      
 
 
 ## Class Methods

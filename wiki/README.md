@@ -1,6 +1,6 @@
 # Contents
 
-## TypeScript
+## JavaScript / TypeScript
 
 - [Type System Basics](TypeSystemBasics.md)
 - [Objects](Objects.md)
@@ -8,6 +8,7 @@
 - [Arrays](Arrays.md)
 - [Interfaces](Interfaces.md)
 - [Classes](Classes.md)
+- [Modules](Modules.md)
 - [Type Modifiers](TypeModifiers.md)
 - [Generics](Generics.md)
 

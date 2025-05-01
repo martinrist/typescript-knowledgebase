@@ -92,7 +92,7 @@
     - You may not use `this` in the subclass constructor until after the call
       to `super()` - this is to ensure superclasses get fully-initialised
       before any subclass methods can be called.
-      
+
 
 
 ## Class Methods

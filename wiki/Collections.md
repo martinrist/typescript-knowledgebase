@@ -1,8 +1,8 @@
-# Arrays
+# Collections - Arrays, Tuples, Maps & Sets
 
 ## Contents
 <!-- TOC -->
-- [Arrays](#arrays)
+- [Collections - Arrays, Tuples, Maps \& Sets](#collections---arrays-tuples-maps--sets)
   - [Contents](#contents)
   - [JavaScript Fundamentals](#javascript-fundamentals)
     - [Overview](#overview)
@@ -14,6 +14,7 @@
   - [Array Types \& Member Access](#array-types--member-access)
   - [Spreads \& Rests](#spreads--rests)
   - [Tuples](#tuples)
+  - [Maps](#maps)
 <!-- TOC -->
 
 
@@ -329,6 +330,10 @@
 
 - Also, tuples of different lengths are not assignable to each other.
 
+
+## Maps
+
+- TODO: Section 11.1 + Section 11.2
 
 
 <!-- References -->

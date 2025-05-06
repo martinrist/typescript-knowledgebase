@@ -14,6 +14,7 @@
   - [Array Types \& Member Access](#array-types--member-access)
   - [Spreads \& Rests](#spreads--rests)
   - [Tuples](#tuples)
+  - [Sets](#sets)
   - [Maps](#maps)
 <!-- TOC -->
 
@@ -331,9 +332,71 @@
 - Also, tuples of different lengths are not assignable to each other.
 
 
+
+## Sets
+
+- Sets are collections that are not indexed or ordered, and cannot contain
+  duplicates.
+
+- Create sets using the `Set()` constructor, which takes an iterable consisting
+  of the members of the newly-created set.
+
+- Can add and remove elements with `add()`, `delete()` and `clear()`.
+
+- `add()` removes the set it was invoked on so you can chain calls, e.g.:
+
+    ```javascript
+    s.add('a').add('b').add('c');
+    ```
+
+- `delete()` returns a boolean specifying whether the value was actually a
+  member of the set.
+
+- Set membership is based on _strict equality_ (`===`), which is important for
+  object or array members.
+
+- Set membership is tested with the `has()` method - optimised for faster testing:
+    - Array's `include()` method is linear in the length of the array.
+    - Set's `has()` method is much faster.
+
+- `Set`s are iterable, so they can be iterated over using a `for / of` loop,
+  or converted to arrays with `...`:
+    - When iterating, set members are returned in insertion order.
+
+
+
 ## Maps
 
-- TODO: Section 11.1 + Section 11.2
+- Maps represent sets of value known as _keys_ where each key has a _value_
+  associated with it:
+    - Like arrays, but instead of using sequential integers as keys, they
+      use arbitrary values as indices.
+
+- Maps have fast lookup by key (not as fast as array lookup by index, but
+  still very fast).
+
+- Create new map using `Map()` constructor, which takes an iterable of 2-element
+  `[k, v]` arrays.
+
+- Once created, can query entries using `get()`, and set entries for keys with
+  `set()`:
+    - Calling `set()` with an exisitng key updates the value for that key.
+
+- Similar to sets, use `has()` to check membership by key, `delete()` to delete
+  entry by key, and `clear()` to remove all entries.
+
+- Iterating `Map`s with `for / of` produces a `[key, value]` array for each
+  entry, which idiomatically is destructured, e.g.:
+
+    ```javascript
+    for (const [k, v] of m) {
+        // ...
+    }
+    ```
+
+- `Map`s iterate in entry insertion order, like `Set`s.
+
+- To iterate just keys or values, use the `keys()` and `values()` methods.
 
 
 <!-- References -->

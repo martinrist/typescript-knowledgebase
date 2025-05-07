@@ -1,14 +1,17 @@
 # Pipes
 
 <!-- TOC -->
-* [Pipes](#pipes)
-  * [Overview](#overview)
-  * [Formatting Strings](#formatting-strings)
-  * [Formatting Numbers](#formatting-numbers)
-  * [Formatting Collections](#formatting-collections)
-  * [Formatting Dates](#formatting-dates)
-  * [Formatting Objects](#formatting-objects)
-  * [Miscellaneous Pipes](#miscellaneous-pipes)
+- [Pipes](#pipes)
+  - [Overview](#overview)
+  - [Formatting Strings](#formatting-strings)
+  - [Formatting Numbers](#formatting-numbers)
+  - [Formatting Collections](#formatting-collections)
+  - [Formatting Dates](#formatting-dates)
+  - [Formatting Objects](#formatting-objects)
+  - [Miscellaneous Pipes](#miscellaneous-pipes)
+  - [Building Custom Pipes](#building-custom-pipes)
+  - [Pure vs Impure Pipes](#pure-vs-impure-pipes)
+  - [Standalone Pipes](#standalone-pipes)
 <!-- TOC -->
 
 ## Overview

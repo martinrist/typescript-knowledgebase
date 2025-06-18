@@ -17,6 +17,7 @@
   - [Optional Properties](#optional-properties)
   - [Unions of Object Types](#unions-of-object-types)
   - [Discriminated Unions](#discriminated-unions)
+  - [Discriminated Tuples](#discriminated-tuples)
   - [Intersection Types](#intersection-types)
 <!-- TOC -->
 
@@ -426,20 +427,20 @@
 - Discriminated unions have a property on the object that indcates what shape
   the object is - the property is called a _discriminant_.
 
-- The discriminant property is of a type literal, and can be used to assist
+- The discriminant property has a literal type, and can be used to assist
   narrowing the type using a conditional check:
 
     ```typescript
     type PoemWithPages = {
+      type: 'pages';
       name: string;
       pages: number;
-      type: 'pages';
     };
 
     type PoemWithRhymes = {
+      type: 'rhymes';
       name: string;
       rhymes: boolean;
-      type: 'rhymes';
     };
 
     type Poem = PoemWithPages | PoemWithRhymes;
@@ -452,6 +453,67 @@
         console.log(`It's got pages: ${poem.pages}`); // Ok
     } else {
         console.log(`It rhymes: ${poem.rhymes}`);
+    }
+    ```
+
+- It's possible to define a 'default' discriminated type, by declaring the
+  discriminator to be optional, e.g.:
+
+    ```typescript
+    // This is the default type
+    type Circle = {
+        kind?: "circle";
+        radius: number;
+    }
+
+    type Square = {
+        kind: "square",
+        sideLength: number;
+    }
+
+    function calculateArea(shape: Shape) {
+        if (shape.kind === "square") {
+            return shape.sideLength * shape.sideLength;
+        } else {
+            return Math.PI * shape.radius * shape.radius;
+        }
+    }
+
+    // we can now call `calculateArea` with an object that doesn't have a
+    // `kind` property, and it'll behave as if it's a `Circle`:
+    calculateArea({ radius: 5 });
+    ```
+
+
+## Discriminated Tuples
+
+- As well as definiting discriminated unions as objects, it's possible to do
+  something similar with tuples, e.g.:
+
+    ```typescript
+    type ApiResponse = ["success", User[]] | ["error", string];
+
+    async function fetchData(): Promise<ApiResponse> {
+        // implementation omitted
+    }
+    ```
+
+- Discriminated tuples can be destructured and we can match on the discriminator
+  in a `switch` statement:
+
+    ```typescript
+    async function example() {
+        // the tuple can be destructured
+        const [status, value] = await fetchData();
+
+        switch (status) {
+            case "success":
+                type successTypeTest = Expect<Equal<typeof value, User[]>>;
+                break;
+        case "error":
+                type errorTypeTest = Expect<Equal<typeof value, string>>;
+                break;
+        }
     }
     ```
 

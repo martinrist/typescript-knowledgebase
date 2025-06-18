@@ -2,18 +2,20 @@
 
 ## Contents
 <!-- TOC -->
-* [Type System Basics](#type-system-basics)
-  * [Contents](#contents)
-  * [Primitive Types](#primitive-types)
-  * [Kinds of Errors](#kinds-of-errors)
-  * [Assignability](#assignability)
-  * [Type Annotations](#type-annotations)
-  * [Type Shapes](#type-shapes)
-  * [Union Types](#union-types)
-  * [Narrowing](#narrowing)
-  * [Literal Types](#literal-types)
-  * [Strict Null Checking](#strict-null-checking)
-  * [Type Aliases](#type-aliases)
+- [Type System Basics](#type-system-basics)
+  - [Contents](#contents)
+  - [Primitive Types](#primitive-types)
+  - [Kinds of Errors](#kinds-of-errors)
+  - [Assignability](#assignability)
+  - [Type Annotations](#type-annotations)
+  - [Type Shapes](#type-shapes)
+  - [Union Types](#union-types)
+  - [Narrowing](#narrowing)
+  - [Literal Types](#literal-types)
+  - [Strict Null Checking](#strict-null-checking)
+  - [Type Aliases](#type-aliases)
+  - [Top Types - `any` \& `unknown`](#top-types---any--unknown)
+  - [`never` - the Bottom Type](#never---the-bottom-type)
 <!-- TOC -->
 
 
@@ -144,7 +146,7 @@
       : 84;
 
     // OK - `toString` exists on both `string` and `number`
-    physicist.toString();        
+    physicist.toString();
 
     // Error - `toUpperCase` does not exist on type `number`
     physicist.toUpperCase();
@@ -163,14 +165,14 @@
     ```typescript
     let admiral: number | string;
     admiral = "Grace Hopper";
-    
+
     // OK - `admiral` has been narrowed to `string` and `toUpperCase` exists
     // on `string`
     admiral.toUpperCase();
-  
+
     // Error: `toFixed` does not exist on type `string`
     admiral.toFixed();
-      
+
     // Reassigning narrows `admiral` to `number`, so we can call `toFixed`
     admiral = 42;
     admiral.toFixed(2))
@@ -184,10 +186,10 @@
     let scientist = Math.random() > 0.5
       ? "Rosalind Franklin"
       : 51;
-  
+
     if (scientist === "Rosalind Franklin") {
-      // OK - here TypeScript knows `scientist` is of type `string`    
-      scientist.toUpperCase()  
+      // OK - here TypeScript knows `scientist` is of type `string`
+      scientist.toUpperCase()
     }
     ```
 
@@ -200,15 +202,21 @@
       : 51;
 
     if (typeof scientist === "string") {
-      // OK - here TypeScript knows `scientist` is of type `string`    
-      scientist.toUpperCase()  
+      // OK - here TypeScript knows `scientist` is of type `string`
+      scientist.toUpperCase()
     };
-  
+
     // This can also be done with the ternary operator
     typeof scientist === "string"
       ? scientist.toUpperCase()
-      : scientist.toFixed() 
+      : scientist.toFixed()
     ```
+
+- Need to be careful when narrowing across scopes - type narrowing done in a
+  wider scope sometimes doesn't transfer down to lower scopes (e.g. down to
+  closures inside calls to `filter()`):
+    - In cases like this, try assigning the narrowed property to a variable in
+      the wider scope.
 
 
 ## Literal Types
@@ -230,10 +238,10 @@
 
     ```typescript
     let specificallyAda: "Ada";
-  
+
     // OK - the literal matches the literal type
     specificallyAda = "Ada";
-  
+
     // Error - type "Byron" is not assignable to type "Ada"
     specificallyAda = "Byron";
     ```
@@ -248,7 +256,7 @@
     ```typescript
     // Error: type `null` is not assignable to type `string`
     const firstName: string = null;
-  
+
     // Error: type `undefined` is not assignable to type `string`
     const lastName: string = undefined;
     ```
@@ -260,7 +268,7 @@
 
     ```typescript
     type RawData = boolean | number | string | null | undefined;
-  
+
     let rawData1: RawData;
     let rawData2: RawData;
     let rawData3: RawData;
@@ -273,10 +281,60 @@
 
     ```typescript
     type Id = number | string;
-    
+
     // Equivalent to `number | string | undefined | null`
     type IdMaybe = Id | undefined | null;
     ```
+
+
+## Top Types - `any` & `unknown`
+
+- A _top type_ or _universal type_ is a type that can represent any possible
+  value in a type system.
+
+- The `any` type can act as a top type - any type can be provided to a location
+  of type `any`.  However, no type checking is performed on that value's
+  assignability or members.
+
+- To indicate that a value can be anything, the `unknown` type is much safer.
+  TypeScript is much more restrictive about values of type `unknown` than it is
+  with the `any` type:
+    - TypeScript does not allow directly accessing properties of `unknown`-typed
+      values.
+    - `unknown` is not assignable to types that aren't top types (`any` or
+      `unknown`).
+
+- The way to access members on a variable of type `unknown` is to narrow the
+  value's type, e.g. by using `instanceof`, `typeof` or with a type assertion:
+
+    ```typescript
+    function greetComedianSafely(name: unknown) {
+      if (typeof name === "string") {
+        // `name` has been narrowed to `string` here
+        console.log(`Announcing ${name.toUpperCase()}!`);
+      } else {
+        console.log(`Well, I'm off`);
+      }
+    }
+    ```
+
+
+## `never` - the Bottom Type
+
+- `never` is the type that represents something that can never happen, such as
+  a function that will never return:
+
+    ```typescript
+    // This is of type: () => never
+    const getNever = () => {
+        throw new Error('This function never returns!');
+    }
+    ```
+
+- `never` is known as the 'bottom' type (as opposed to `unknown` as the top
+  type):
+    - So, `never` can be assigned to anything.
+    - But nothing can be assigned to a reference of type `never`.
 
 
 <!-- References -->

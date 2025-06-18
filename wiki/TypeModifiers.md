@@ -2,46 +2,13 @@
 
 ## Contents
 <!-- TOC -->
-* [Type Modifiers](#type-modifiers)
-  * [Contents](#contents)
-  * [Top Types - `any` & `unknown`](#top-types---any--unknown)
-  * [Type Predicates](#type-predicates)
-  * [Type Operators](#type-operators)
-  * [Type Assertions](#type-assertions)
-  * [Const Assertions](#const-assertions)
+- [Type Modifiers](#type-modifiers)
+  - [Contents](#contents)
+  - [Type Predicates](#type-predicates)
+  - [Type Operators](#type-operators)
+  - [Type Assertions](#type-assertions)
+  - [Const Assertions](#const-assertions)
 <!-- TOC -->
-
-
-## Top Types - `any` & `unknown`
-
-- A _top type_ or _universal type_ is a type that can represent any possible
-  value in a type system.
-
-- The `any` type can act as a top type - any type can be provided to a location
-  of type `any`.  However, no type checking is performed on that value's
-  assignability or members.
-
-- To indicate that a value can be anything, the `unknown` type is much safer.
-  TypeScript is much more restrictive about values of type `unknown` than it is
-  with the `any` type:
-    - TypeScript does not allow directly accessing properties of `unknown`-typed
-      values.
-    - `unknown` is not assignable to types that aren't top types (`any` or
-      `unknown`).
-
-- The way to access members on a variable of type `unknown` is to narrow the
-  value's type, e.g. by using `instanceof`, `typeof` or with a type assertion:
-
-    ```typescript
-    function greetComedianSafely(name: unknown) {
-      if (typeof name === "string") {
-        // `name` has been narrowed to `string` here
-        console.log(`Announcing ${name.toUpperCase()}!`);
-      } else {
-        console.log(`Well, I'm off`);
-      }
-    }
-    ```
 
 
 ## Type Predicates

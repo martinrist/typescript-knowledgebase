@@ -1,15 +1,15 @@
 # Services & Dependency Injection
 
 <!-- TOC -->
-* [Services & Dependency Injection](#services--dependency-injection)
-  * [Overview](#overview)
-  * [Creating Services](#creating-services)
-  * [Using Dependencies in Consumers](#using-dependencies-in-consumers)
-  * [Providing Dependencies in the Root Injector](#providing-dependencies-in-the-root-injector)
-  * [Providing Dependencies in Other Injectors](#providing-dependencies-in-other-injectors)
-  * [Injecting Services in the Component Tree](#injecting-services-in-the-component-tree)
-  * [Restricting Provider Lookup](#restricting-provider-lookup)
-  * [Overriding Providers in the Injector Hierarchy](#overriding-providers-in-the-injector-hierarchy)
+- [Services \& Dependency Injection](#services--dependency-injection)
+  - [Overview](#overview)
+  - [Creating Services](#creating-services)
+  - [Using Dependencies in Consumers](#using-dependencies-in-consumers)
+  - [Providing Dependencies in the Root Injector](#providing-dependencies-in-the-root-injector)
+  - [Providing Dependencies in Other Injectors](#providing-dependencies-in-other-injectors)
+  - [Injecting Services in the Component Tree](#injecting-services-in-the-component-tree)
+  - [Restricting Provider Lookup](#restricting-provider-lookup)
+  - [Overriding Providers in the Injector Hierarchy](#overriding-providers-in-the-injector-hierarchy)
 <!-- TOC -->
 
 ## Overview

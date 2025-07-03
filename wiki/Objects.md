@@ -238,7 +238,7 @@
     ```
 
 - Object types use a syntax that looks like object literals, but with types in
-  place of values:
+  place of values, and semicolons as line terminators instead of commas:
 
     ```typescript
     let poetLater: {
@@ -410,7 +410,7 @@
     ```
 
 - If the type checker sees that an area of code can only be run if a union typed
-  value contains a certain property, then the type is narrowed to only the
+  value contains a certain property, then the type is _narrowed_ to only the
   constituents that contain the property:
 
     ```typescript
@@ -551,6 +551,28 @@
     // Type: never
     type NotPossible = number & string;
     ```
+
+- It's possible to use intersection types to extract common properties into
+  a 'base entity'.  However, it's more common to use [Interfaces](Interfaces.md)
+  for this:
+
+    ```typescript
+    type BaseEntity = {
+        id: string;
+        createdAt: Date;
+    }
+
+    type User = {
+        name: string;
+        email: string;
+    } & BaseEntity;
+
+    type Product = {
+        description: string;
+        price: number;
+    } & BaseEntity;
+    ```
+
 
 
 <!-- References -->

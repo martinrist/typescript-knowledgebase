@@ -2,13 +2,14 @@
 
 ## Contents
 <!-- TOC -->
-* [Interfaces](#interfaces)
-  * [Contents](#contents)
-  * [Type Aliases vs Interfaces](#type-aliases-vs-interfaces)
-  * [Types of Properties](#types-of-properties)
-  * [Nested Interfaces](#nested-interfaces)
-  * [Interface Extensions](#interface-extensions)
-  * [Interface Merging](#interface-merging)
+- [Interfaces](#interfaces)
+  - [Contents](#contents)
+  - [Type Aliases vs Interfaces](#type-aliases-vs-interfaces)
+  - [Types of Properties](#types-of-properties)
+  - [Nested Interfaces](#nested-interfaces)
+  - [Interface Extensions](#interface-extensions)
+  - [Interfaces vs Type Aliases](#interfaces-vs-type-aliases)
+  - [Interface Merging](#interface-merging)
 <!-- TOC -->
 
 
@@ -131,6 +132,24 @@
     counts.banana = 1;
     ```
 
+- It's possible to add new defined keys alongside the index signature, but
+  the types have to be assignable to the type of the index signature:
+
+    ```typescript
+    type Scores = {
+        [subject: string]: number;
+        maths: number;              // OK
+        science: string;            // Not allowed - `string` not assignable to `number`
+    }
+    ```
+
+- As an alternative to interfaces or types with index signatures, it's possible
+  to use the `Record` type:
+
+    ```typescript
+    const counts: Record<string, number>;
+    ```
+
 
 ## Nested Interfaces
 
@@ -227,10 +246,23 @@
     ```
 
 
+## Interfaces vs Type Aliases
+
+- A big question in TypeScript is whether to use `type` or `interface`:
+  - `type` can represent anything, including objects.
+  - `interface` is primarily used to represent object types.
+
+- A more detailed version of this is whether to use type intersection (e.g.
+  `type A = A1 & A2`) vs interface extension (e.g. `interface A extends A1, A2`):
+  - TypeScript prefers the use of interface extension over type intersection.
+  - This is because interface definitions can be cached based on their name.
+  - So performance is improved.
+
+
 ## Interface Merging
 
-- Interfaces can be _merged_ - two (or more) interfaces declared in the same
-  scope with the same name will join into one bigger interface under that name
+- Interfaces can be _merged_ - two (or more) interfaces declared _in the same
+  scope_ with the same name will join into one bigger interface under that name
   with all declared fields:
 
     ```typescript

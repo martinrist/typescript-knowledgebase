@@ -14,7 +14,7 @@
 - [Interfaces](Interfaces.md)
 - [Classes](Classes.md)
 - [Modules](Modules.md)
-- [Type Modifiers](TypeModifiers.md)
+- [Type Modifiers & Helpers](TypeModifiersAndHelpers.md)
 - [Generics](Generics.md)
 
 

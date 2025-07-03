@@ -286,6 +286,10 @@
     type IdMaybe = Id | undefined | null;
     ```
 
+- [Interfaces](Interfaces.md) are sometimes used in preference to type aliases,
+  especially when describing object types.  See [Interfaces](Interfaces.md) for
+  a comparison of these approaches.
+
 
 ## Top Types - `any` & `unknown`
 

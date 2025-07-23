@@ -15,6 +15,8 @@
     - [Non-Distributivity of `Pick` and `Omit`](#non-distributivity-of-pick-and-omit)
     - [`Partial` and `Required`](#partial-and-required)
     - [`Readonly`](#readonly)
+    - [`Parameters`, `ReturnType` and `Awaited`](#parameters-returntype-and-awaited)
+  - [Indexed Access Types](#indexed-access-types)
 <!-- TOC -->
 
 
@@ -122,6 +124,10 @@
 
     logRating('critic');
     ```
+
+- Note that, whilst `typeof` allows us to create a type from a value, it's not
+  possible to do this the other way around - i.e. to create a runtime value
+  from a type.
 
 
 ## Type Assertions
@@ -410,6 +416,111 @@
             type: "button",
         },
     } as const;
+    ```
+
+
+### `Parameters`, `ReturnType` and `Awaited`
+
+- The `Parameters` type helper allows you to get the parameters of a function
+  type, e.g.:
+
+    ```typescript
+    const makeQuery = (
+        url: string,
+        opts?: {
+            method?: string;
+            body?: string
+        }
+    ) => {};
+
+
+    type MakeParameters = Parameters<typeof makeQuery>
+    ```
+
+- Similarly, `ReturnType` is a type helper that extracts the return type of a
+  function type, e.g.:
+
+    ```typescript
+    const const createUser = (id: string) => {
+        return {
+            id,
+            name: "John Doe",
+            email: "example@email.com",
+        };
+    };
+
+    type User = ReturnType<typeof createUser>;
+    ```
+
+- If the function is `async`, the return type will actually be a `Promise`.
+  We can use `Awaited` to extract the actual return type:
+
+    ```typescript
+    const fetchUser = async (id: string) => {
+        return {
+            id,
+            name: "John Doe",
+            email: "example@email.com",
+        };
+    };
+
+    type User = Awaited<ReturnType<typeof fetchUser>>;
+    ```
+
+
+## Indexed Access Types
+
+- _Indexed Access Types_ allow us to use an expression to index into the types
+  of properties in a type, e.g.:
+
+    ```typescript
+    export const programModeEnumMap = {
+        GROUP: 'group',
+        ANNOUNCEMENT: 'announcement',
+        ONE_ON_ONE: '1on1',
+    } as const;
+
+    type ProgramModeMap = typeof programModeEnumMap;
+
+    // `Group` is "group" - and always stays in sync with the value in `programModeEnumMap`
+    type Group = ProgramModeMap['GROUP'];
+    ```
+
+- This can be useful for keeping types synchronised across different types -
+  to establish single sources of truth.
+
+- It's also possible to pass a union type as the index, e.g.:
+
+    ```typescript
+    type PlannedPrograms = ProgramModeMap['PLANNED_ONE_ON_ONE' | 'PLANNED_SELF_DIRECTED'];
+
+    // the above is the same as the following, but more succinct
+    type PlannedPrograms = ProgramModeMap['PLANNED_ONE_ON_ONE']
+        | ProgramModeMap['PLANNED_SELF_DIRECTED'];
+    ```
+
+- It's also possible to pass in a `keyof` expression to extract a union of
+  all the values from an object:
+
+    ```typescript
+    // This is `'group' | 'announcement' | '1on1'`
+    type AllPrograms = ProgramModeMap[keyof ProgramModeMap];
+
+    // same as above, just more condensed and idiomatic
+    type AllPrograms = (typeof programModeMap)[keyof typeof programModeMap];
+    ```
+
+- If trying to do this from an array, we need to pass in `number`:
+
+    ```typescript
+    // Note that `programModes` is now an array, not an object
+    export const programModes = [
+        "group",
+        "announcement",
+        "1on1",
+    ] as const;
+
+    type AllPrograms = (typeof programModes)[number];
     ```
 
 <!-- References -->

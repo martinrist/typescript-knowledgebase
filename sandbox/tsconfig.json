@@ -1,5 +1,6 @@
 {
   // See: https://2ality.com/2025/01/tsconfig-json.html for details
+  // See also: https://www.totaltypescript.com/workshops/typescript-pro-essentials/configuring-typescript/recommended-base-configuration
 
   "include": ["src/**/*", "test/**/*"],
 
@@ -9,8 +10,22 @@
     "rootDir": ".",
     "outDir": "dist",
 
+    // See: https://www.totaltypescript.com/workshops/typescript-pro-essentials/configuring-typescript/recommended-base-configuration
+    // 'Base options'
+    "skipLibCheck": true,
+    "target": "es2016",
+    "esModuleInterop": true,
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+
     // See: https://www.typescriptlang.org/tsconfig/#strict
+    // and: https://www.totaltypescript.com/workshops/typescript-pro-essentials/configuring-typescript/recommended-base-configuration
     "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
 
     // Emit .d.ts and sourcemap files
     // See:

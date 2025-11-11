@@ -4,6 +4,7 @@
 		"moduleResolution": "node",
 		"skipLibCheck": true,
 		"strict": true,
-		"target": "es2021"
+		"target": "es2021",
+    "outDir": "dist"
 	}
 }

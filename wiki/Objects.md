@@ -6,6 +6,7 @@
   - [Contents](#contents)
   - [JavaScript Fundamentals](#javascript-fundamentals)
     - [Overview](#overview)
+    - [Property Access \& Modification](#property-access--modification)
     - [Prototypes](#prototypes)
     - [Testing Properties](#testing-properties)
     - [Enumerating Properties](#enumerating-properties)
@@ -13,7 +14,7 @@
     - [Object Methods](#object-methods)
     - [Extended Object Literal Syntax](#extended-object-literal-syntax)
   - [Object Types](#object-types)
-  - [Structural Typing](#structural-typing)
+  - [Structural Typing for Objects](#structural-typing-for-objects)
   - [Optional Properties](#optional-properties)
   - [Unions of Object Types](#unions-of-object-types)
   - [Discriminated Unions](#discriminated-unions)
@@ -31,20 +32,19 @@
     - Keys are normally `string` values (although they can also be `Symbol`s).
     - Objects are mutable - their properties can be added, modified, or deleted
       after creation.
-    - Objects are passed by reference, not by value.
-    - Object properties can be any valid JavaScript value (strings, numbers,
-      booleans, functions, other objects, etc).
 
-
-### Object Creation
+- Objects are passed by reference, not by value.
 
 - Objects can be created various ways:
     - With object literals - e.g. `{ x: 0, y: 1 }`
     - With the `new` keyword - e.g. `new Object()`, `new Date()`
     - With the `Object.create()` function - e.g. `Object.create({x: 1, y: 2})`
 
+- Object properties can be any valid JavaScript value (strings, numbers,
+  booleans, functions, other objects, etc).
 
-### Property Access & Modification
+
+### Property Access & Modification
 
 - Properties can be accessed using dot notation (`obj.property`) or bracket
   notation (`obj['property']`):
@@ -272,7 +272,7 @@
     ```
 
 
-## Structural Typing
+## Structural Typing for Objects
 
 - TypeScript's type system is _structurally typed_ - any value that satisfies a
   type is allowed to be used as a value of that type.
@@ -303,7 +303,7 @@
     let withLastName: WithLastName = hasBoth;
     ```
 
-- For objects to be assignable in this way, the ymust have all the object type's
+- For objects to be assignable in this way, they must have all the object type's
   required properties, _and_ the types of the properties must match.
 
 - It is also an error if a variable is declared with an object type and its
@@ -324,8 +324,8 @@
     };
     ```
 
-- Excess property checks only trigger for object literals being created in
-  locations that are declared to be an object type - providing an existing
+- These _excess property checks_ only trigger for object literals being created
+  in locations that are declared to be an object type - providing an existing
   object literal bypasses excess property checks.
 
 - Object types can be nested:
@@ -353,7 +353,7 @@
 
 ## Optional Properties
 
-- Object type properties don't all have to be reuqired in the object - optional
+- Object type properties don't all have to be required in the object - optional
   properties are denoted by `?`:
 
     ```typescript
@@ -470,6 +470,8 @@
         kind: "square",
         sideLength: number;
     }
+
+    type Shape = Circle | Square
 
     function calculateArea(shape: Shape) {
         if (shape.kind === "square") {

@@ -24,7 +24,7 @@
 
 ### Overview
 
-- A _function_ is ablock of code that is defined once but may be _invoked_ any
+- A _function_ is a block of code that is defined once but may be _invoked_ any
   number of times:
     - Function definitions define _parameters_ that work as local variables in
       the function body.
@@ -69,7 +69,7 @@
 - Unlike function declarations, function expressions do not declare a variable -
   it's up to you to assign the newly-defined function to a variable.
 
-- In ES6, a new compact syntax - _arrow functions_ can be used instead of
+- In ES6, a new compact syntax - _arrow functions_ - can be used instead of
   the `function` keyword when defining function expressions, e.g.:
 
     ```javascript
@@ -157,8 +157,9 @@
 
 - When a function is invoked with fewer arguments than declared parameters, the
   additional parameters are set to their default value - usually `undefined`:
-    - Function definitions can be writtent so as to allow optional arguments,
-      with default values being provided using the `|| defaultValue` idiom.
+    - Function definitions can be written so as to allow optional arguments,
+      with default values being provided using the `|| defaultValue` idiom,
+      or the more modern `?? defaultValue` version.
     - Make sure to keep the optional arguments at the end of the argument list.
     - ES6 and later permits the definition of a default value in the function
       signature, e.g. `function getPropertyNames(o, a = []) { ... }`.
@@ -212,7 +213,7 @@
 - Functions are a specialised kind of object, which means that they can have
   properties:
     - e.g. if a function needs a 'static' variable whose values persist across
-      invocations, it's often convenient to use a function property
+      invocations, it's often convenient to use a function property.
 
 
 

@@ -2,9 +2,8 @@ import { describe, expect, test } from "@jest/globals";
 import { expectType } from "tsd";
 
 import * as index from "./index";
-import * as solution from "./solution";
 
-const { createCodeCracker } = process.env.TEST_SOLUTIONS ? solution : index;
+const { createCodeCracker } = index;
 
 describe(createCodeCracker, () => {
 	describe("types", () => {

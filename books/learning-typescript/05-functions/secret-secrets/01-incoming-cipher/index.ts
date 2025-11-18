@@ -1,15 +1,13 @@
 // Write your createCipher function here! ✨
 // You'll need to export it so the tests can run it.
-export function createCipher(cipher: (character: string) => string) {
+export type Cipher = (text: string) => string;
+
+export function createCipher(cipher: Cipher) {
   return (text: string) => {
-    let result = '';
-
-    for (const character of text) {
-      result += cipher(character);
+    let result = "";
+    for (const char of text) {
+      result += cipher(char);
     }
-
     return result;
-  };
+  }
 }
-
-export type Cipher = (character: string) => string;

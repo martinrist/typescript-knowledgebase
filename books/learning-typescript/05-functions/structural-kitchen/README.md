@@ -64,10 +64,12 @@ It must return an object with the following properties:
 - `clean`: A function that sets the `dirt` state to the result of calling `cleaner` on the existing `dirt` amount and `time` parameter.
   - Parameters:
     1. `time` (optional): How much time to spend cleaning
+
 - `purchase`: A function that takes in an `expense` amount and, if there is enough budget for that expense, calls `supplier` with it and increases stock by the results.
   - Parameters:
     1. `expense`: How much money to spend on cleaning
   - Return: A boolean indicating whether there was enough budget
+
 - `prepare`: A function that attempts to make a recipe and increase `dirt` state by `1`, but only if the `dirt` state is below `100`.
   - Parameters:
     1. `recipe`: A function that takes in an object describing the ingredients, and returns either:

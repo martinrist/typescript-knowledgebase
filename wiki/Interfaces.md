@@ -78,7 +78,17 @@
     ```
 
 - Note that `readonly` modifiers only apply where objects are used in a location
-  that declare them to be of that interface.
+  that declare them to be of that interface.  They don't work where the type is
+  inferred:
+
+    ```typescript
+    const pageIsh = {
+        text: 'Hello World!';
+    }
+
+    // Ok - pageIsh is an inferred object type with `text`, not a `Page`
+    page.text += '!';
+    ```
 
 - Object members in JavaScript are often functions.  TypeScript provides two
   ways of declaring interface members as functions:
@@ -102,6 +112,11 @@
     hasBoth.method();           // Also OK
     ```
 
+- General guidance on using method syntax vs property syntax:
+    - Use method syntax if you know the underlying function may refer to `this`,
+      most commonly for instances of classes.
+    - Use property syntax otherwise.
+
 - Interfaces can also be used to define function types, by providing a _call
   signature_, which looks similar to a method signature, but has no name:
 
@@ -118,7 +133,7 @@
   in an interface.
 
 - Index signatures look like regular property definitions, but with a type after
-  the key, and array brackets surrounding the key - e.g. `{ [i: string}: ... }`:
+  the key, and array brackets surrounding the key - e.g. `{ [i: string]: ... }`:
 
     ```typescript
     interface WordCounts {
@@ -130,6 +145,9 @@
     // OK
     counts.apple = 0;
     counts.banana = 1;
+
+    // Error: type 'boolean' is not assignable to type 'number':
+    counts.cherry = false;
     ```
 
 - It's possible to add new defined keys alongside the index signature, but
@@ -216,7 +234,7 @@
 
 - Derived interfaces may _override_ or replace properties from their base
   interface by redeclaring the property with a different type (provided that
-  overridden type is assignable to the base type:
+  overridden type is assignable to the base type):
 
     ```typescript
     interface WithNullableName {
@@ -228,7 +246,7 @@
     }
     ```
 
-- Interfaces can extend multiple other interfaces (with names separated by
+- Interfaces can extend multiple other interfaces, with names separated by
   commas after the `extends` keyword:
 
     ```typescript
@@ -249,14 +267,14 @@
 ## Interfaces vs Type Aliases
 
 - A big question in TypeScript is whether to use `type` or `interface`:
-  - `type` can represent anything, including objects.
-  - `interface` is primarily used to represent object types.
+    - `type` can represent anything, including objects.
+    - `interface` is primarily used to represent object types.
 
 - A more detailed version of this is whether to use type intersection (e.g.
   `type A = A1 & A2`) vs interface extension (e.g. `interface A extends A1, A2`):
-  - TypeScript prefers the use of interface extension over type intersection.
-  - This is because interface definitions can be cached based on their name.
-  - So performance is improved.
+    - TypeScript prefers the use of interface extension over type intersection.
+    - This is because interface definitions can be cached based on their name.
+    - So performance is improved.
 
 
 ## Interface Merging

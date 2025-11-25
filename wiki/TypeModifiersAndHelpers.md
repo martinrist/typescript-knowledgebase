@@ -174,8 +174,8 @@
 
 ## Const Assertions
 
-- _Const assertions_ can be used to indicate that any value should be
-  treated as the constant, immutable version of itself:
+- _Const assertions_ (`as const`) can be used to indicate that any value should
+  be treated as the constant, immutable version of itself:
     - Arrays are treated as `readonly` tuples, not mutable arrays.
     - Literals are treated as literals, not their general primitive equivalents.
     - Properties on objects are considered `readonly`

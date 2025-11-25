@@ -1,4 +1,4 @@
-# Step 1: Shallow Equality
+****# Step 1: Shallow Equality
 
 The first function we'll need you to write is `shallowEquality`.
 It takes in two DNA sequences and returns a boolean indicating whether they're the same.

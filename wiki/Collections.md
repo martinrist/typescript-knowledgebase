@@ -257,6 +257,9 @@
     let arrayOfStringOrNumber: (string | number)[];
     ```
 
+- If a type annotation isn't provided on an initially-empty array, TypeScript
+  will treat the array as an evolving `any[]` - this is generally discouraged.
+
 - Multi-dimensional arrays are specified as arrays-of-arrays, using more `[]`'s:
 
     ```typescript

@@ -1,9 +1,8 @@
 import { describe, expect, test } from "@jest/globals";
 
 import * as index from "./index";
-import * as solution from "./solution";
 
-const { groupRestaurants } = process.env.TEST_SOLUTIONS ? solution : index;
+const { groupRestaurants } = index;
 
 describe(groupRestaurants, () => {
 	test.each([
@@ -57,7 +56,7 @@ describe(groupRestaurants, () => {
 		],
 	])(
 		"%j",
-		(city: solution.Restaurant[], grouped: solution.GroupedRestaurants) => {
+		(city: index.Restaurant[], grouped: index.GroupedRestaurants) => {
 			expect(groupRestaurants(city)).toEqual(grouped);
 		},
 	);

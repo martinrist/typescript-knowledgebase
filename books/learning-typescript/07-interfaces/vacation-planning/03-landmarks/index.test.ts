@@ -1,15 +1,14 @@
 import { describe, expect, test } from "@jest/globals";
 
 import * as index from "./index";
-import * as solution from "./solution";
 
-const { describeLandmark } = process.env.TEST_SOLUTIONS ? solution : index;
+const { describeLandmark } = index;
 
 const dedent = (text: TemplateStringsArray) =>
 	text[0].replaceAll(/\n\s*/g, "\n").trim();
 
 describe(describeLandmark, () => {
-	test.each<[solution.Landmark, string]>([
+	test.each<[index.Landmark, string]>([
 		[
 			{
 				name: "Fort Brewerton",

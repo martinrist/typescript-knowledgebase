@@ -1,12 +1,11 @@
 import { describe, expect, test } from "@jest/globals";
 
 import * as index from "./index";
-import * as solution from "./solution";
 
-const { unrollPlaylist } = process.env.TEST_SOLUTIONS ? solution : index;
+const { unrollPlaylist } = index;
 
 describe(unrollPlaylist, () => {
-	test.each<[solution.PlaylistItem[], unknown]>([
+	test.each<[index.PlaylistItem[], unknown]>([
 		[[], { artists: {}, songs: [], time: 0 }],
 		[
 			[{ artist: [], length: 1, name: "", type: "song" }],

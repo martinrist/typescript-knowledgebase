@@ -1,9 +1,8 @@
 import { describe, expect, it } from "@jest/globals";
 
 import * as index from "./index";
-import * as solution from "./solution";
 
-const { Gerbil, Hamster } = process.env.TEST_SOLUTIONS ? solution : index;
+const { Gerbil, Hamster } = index;
 
 describe(Gerbil, () => {
 	describe("species", () => {
@@ -28,7 +27,7 @@ describe(Gerbil, () => {
 	describe("eats", () => {
 		const pet = new Gerbil();
 
-		it.each<[boolean, solution.SmallPetFood]>([
+		it.each<[boolean, index.SmallPetFood]>([
 			[false, "bugs"],
 			[false, "fruits"],
 			[true, "insects"],

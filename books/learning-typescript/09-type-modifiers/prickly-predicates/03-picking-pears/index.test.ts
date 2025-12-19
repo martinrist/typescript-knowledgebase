@@ -2,23 +2,19 @@ import { describe, expect, it, test } from "@jest/globals";
 import { expectType } from "tsd";
 
 import * as index from "./index";
-import * as solution from "./solution";
 
-const { isFruitBearingCactus, pickFruitBearingCacti } = process.env
-	.TEST_SOLUTIONS
-	? solution
-	: (index as typeof solution);
+const { isFruitBearingCactus, pickFruitBearingCacti } = index;
 
 describe(isFruitBearingCactus, () => {
 	describe("types", () => {
 		test("function type", () => {
 			expectType<
-				(data: solution.Cactus) => data is solution.FruitBearingCactus
+				(data: index.Cactus) => data is index.FruitBearingCactus
 			>(isFruitBearingCactus);
 		});
 	});
 
-	it.each<[solution.Cactus, boolean]>([
+	it.each<[index.Cactus, boolean]>([
 		[{ picked: false, state: "dormant" }, false],
 		[{ picked: true, state: "dormant" }, false],
 		[{ flowers: "small", state: "flowering" }, false],
@@ -35,13 +31,13 @@ describe(isFruitBearingCactus, () => {
 describe(pickFruitBearingCacti, () => {
 	describe("types", () => {
 		test("function type", () => {
-			expectType<(data: solution.Cactus[]) => solution.FruitBearingCactus[]>(
+			expectType<(data: index.Cactus[]) => index.FruitBearingCactus[]>(
 				pickFruitBearingCacti,
 			);
 		});
 	});
 
-	it.each<[solution.Cactus[], solution.Cactus[]]>([
+	it.each<[index.Cactus[], index.Cactus[]]>([
 		[[], []],
 		[[{ picked: true, state: "dormant" }], []],
 		[[{ flowers: "small", state: "flowering" }], []],

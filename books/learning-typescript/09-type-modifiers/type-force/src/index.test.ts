@@ -2,28 +2,27 @@ import { describe, expect, it, test } from "@jest/globals";
 import { expectType } from "tsd";
 
 import * as index from "./index";
-import * as solution from "./solution";
 
-const { duel } = process.env.TEST_SOLUTIONS ? solution : index;
+const { duel } = index;
 
 describe(duel, () => {
 	describe("types", () => {
 		test("function type", () => {
 			expectType<
 				(
-					good: solution.Fighter,
-					bad: solution.Fighter,
-				) => readonly ["hero" | "villain", solution.Character]
+					good: index.Fighter,
+					bad: index.Fighter,
+				) => readonly ["hero" | "villain", index.Character]
 			>(duel);
 		});
 	});
 
-	const human: solution.Fighter = {
+	const human: index.Fighter = {
 		mutations: [],
 		name: "Human",
 	};
 
-	const patsy: solution.Fighter = {
+	const patsy: index.Fighter = {
 		// Lowers toughness by a great deal
 		mutations: ["wings", "wings", "wings"],
 		name: "Patsy",
@@ -59,7 +58,7 @@ describe(duel, () => {
 		});
 
 		describe("mutations", () => {
-			test.each<[solution.Fighter, solution.Character]>([
+			test.each<[index.Fighter, index.Character]>([
 				[
 					{
 						mutations: [],

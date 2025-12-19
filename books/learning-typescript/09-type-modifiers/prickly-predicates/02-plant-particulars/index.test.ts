@@ -2,16 +2,13 @@ import { describe, expect, it, test } from "@jest/globals";
 import { expectType } from "tsd";
 
 import * as index from "./index";
-import * as solution from "./solution";
 
-const { isAnyCrop } = process.env.TEST_SOLUTIONS
-	? solution
-	: (index as typeof solution);
+const { isAnyCrop } = index;
 
 describe(isAnyCrop, () => {
 	describe("types", () => {
 		test("function type", () => {
-			expectType<(data: solution.AnyCrop) => data is solution.AnyCrop>(
+			expectType<(data: index.AnyCrop) => data is index.AnyCrop>(
 				isAnyCrop,
 			);
 		});

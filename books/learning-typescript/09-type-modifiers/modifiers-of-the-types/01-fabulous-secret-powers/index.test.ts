@@ -1,10 +1,9 @@
-import { beforeEach, describe, expect, it, jest } from "@jest/globals";
+import { describe, expect, it, jest } from "@jest/globals";
 import { expectType } from "tsd";
 
 import * as index from "./index";
-import * as solution from "./solution";
 
-const { announceCharacter } = process.env.TEST_SOLUTIONS ? solution : index;
+const { announceCharacter } = index;
 
 const mockLog = (console.log = jest.fn());
 
@@ -34,6 +33,6 @@ describe(announceCharacter, () => {
 			side: "evil",
 		});
 
-		expectType<solution.Character>(actual);
+		expectType<index.Character>(actual);
 	});
 });

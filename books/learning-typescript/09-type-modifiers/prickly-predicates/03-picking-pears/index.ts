@@ -1,4 +1,9 @@
-export type Cactus = DefaultCactus | FloweringCactus | FruitBearingCactus;
+export type Cactus = DormantCactus | FloweringCactus | FruitBearingCactus;
+
+export interface DormantCactus {
+	picked: boolean;
+	state: "dormant";
+}
 
 export interface FloweringCactus {
 	flowers: "small" | "medium" | "large";
@@ -10,10 +15,12 @@ export interface FruitBearingCactus {
 	state: "fruit-bearing";
 }
 
-export interface DefaultCactus {
-	picked: boolean;
-	state: "default";
+export function isFruitBearingCactus(
+	cactus: Cactus,
+): cactus is FruitBearingCactus {
+	return cactus.state === "fruit-bearing";
 }
 
-// Write your isFruitBearingCactus and pickFruitBearingCacti functions here! ✨
-// You'll need to export it so the tests can run it.
+export function pickFruitBearingCacti(cacti: Cactus[]) {
+	return cacti.filter(isFruitBearingCactus);
+}

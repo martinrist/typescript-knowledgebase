@@ -2,16 +2,15 @@ import { describe, expect, it, test } from "@jest/globals";
 import { expectType } from "tsd";
 
 import * as index from "./index";
-import * as solution from "./solution";
 
-const { collectTreasure } = process.env.TEST_SOLUTIONS ? solution : index;
+const { collectTreasure } = index;
 
 describe(collectTreasure, () => {
 	describe("types", () => {
 		test("function type", () => {
 			expectType<
 				<Content, Fake extends Content, Real extends Content>(
-					buried: solution.Buried<Content>,
+					buried: index.Buried<Content>,
 					isFake: (item: Content) => item is Fake,
 					isReal: (item: Content) => item is Real,
 				) => { fake: Fake[]; real: Real[]; scrap: Content[] }
@@ -21,7 +20,7 @@ describe(collectTreasure, () => {
 
 	it("adds a fake item to the fake array when the type is treasure", () => {
 		const content = "fake";
-		const buried: solution.Buried<unknown> = {
+		const buried: index.Buried<unknown> = {
 			content,
 			type: "treasure",
 		};
@@ -41,7 +40,7 @@ describe(collectTreasure, () => {
 
 	it("adds a real item to the real array when the type is treasure", () => {
 		const content = "real";
-		const buried: solution.Buried<unknown> = {
+		const buried: index.Buried<unknown> = {
 			content,
 			type: "treasure",
 		};
@@ -61,7 +60,7 @@ describe(collectTreasure, () => {
 
 	it("adds a scrap item to the scrap array when the type is treasure", () => {
 		const content = "scrap";
-		const buried: solution.Buried<unknown> = {
+		const buried: index.Buried<unknown> = {
 			content,
 			type: "treasure",
 		};
@@ -81,7 +80,7 @@ describe(collectTreasure, () => {
 
 	it("recurses into content when the type is catacomb", () => {
 		const content = "fake";
-		const buried: solution.Buried<unknown> = {
+		const buried: index.Buried<unknown> = {
 			inside: {
 				content,
 				type: "treasure",
@@ -105,7 +104,7 @@ describe(collectTreasure, () => {
 	it("recurses into entrances when the type is tunnels", () => {
 		const first = "first";
 		const second = "second";
-		const buried: solution.Buried<unknown> = {
+		const buried: index.Buried<unknown> = {
 			entrances: [
 				{
 					content: first,

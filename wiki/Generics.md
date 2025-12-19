@@ -2,15 +2,15 @@
 
 ## Contents
 <!-- TOC -->
-* [Generics](#generics)
-  * [Contents](#contents)
-  * [Generic Functions](#generic-functions)
-  * [Generic Interfaces](#generic-interfaces)
-  * [Generic Classes](#generic-classes)
-  * [Generic Type Aliases](#generic-type-aliases)
-  * [Generic Modifiers](#generic-modifiers)
-  * [Constrained Generic Types](#constrained-generic-types)
-  * [Promises](#promises)
+- [Generics](#generics)
+  - [Contents](#contents)
+  - [Generic Functions](#generic-functions)
+  - [Generic Interfaces](#generic-interfaces)
+  - [Generic Classes](#generic-classes)
+  - [Generic Type Aliases](#generic-type-aliases)
+  - [Generic Modifiers](#generic-modifiers)
+  - [Constrained Generic Types](#constrained-generic-types)
+  - [Promises](#promises)
 <!-- TOC -->
 
 
@@ -59,7 +59,6 @@
   functions:
 
     ```typescript
-
     interface Box<T> {
       inside: T;
     }
@@ -134,6 +133,12 @@
 
 - Class methods may also declare their own generic type parameters separate
   from their class instance.
+
+- Static members of a class are separate from instance methods, and aren't
+  associated with a class instance, so they don't have access to type
+  information that's specific to class instance:
+    - Therefore, although they _can_ declare their own type parameters, they
+      can't access type parameters declared on the class.
 
 
 ## Generic Type Aliases

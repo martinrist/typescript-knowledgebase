@@ -2,9 +2,8 @@ import { describe, jest, test } from "@jest/globals";
 import { expectType } from "tsd";
 
 import * as index from "./index";
-import * as solution from "./solution";
 
-const z = process.env.TEST_SOLUTIONS ? solution : index;
+const z = index;
 
 const mockRandom = jest.spyOn(Math, "random");
 
